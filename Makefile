@@ -1,28 +1,39 @@
-NAME = push_swap.a
+PUSH_SWAP = push_swap
+NAME = $(PUSH_SWAP)
+
+CC = gcc
+CFLAGS =  -Wall -Wextra -Werror -g3
 
 RM = rm -f
 
-CFLAGS =  -Wall -Wextra -Werror -g
+LIBFTDIR = libft/
+OBJ_DIR = obj/
+SRC_DIR = srcs/
 
-.PHONY: all clean fclean re bonus
-
-SRC = main.c \
+SRC = srcs/push_swap/push_swap.c \
 
 OBJ = $(SRC:.c=.o)
 
-libft:
-	cd libft && $(MAKE)
+INCLUDE = -L ./libft -lft
 
-all: $(NAME) $(LIBFT)
+.c.o:
+	${CC} -c $< -o ${<:.c=.o}
 
-$(NAME) : $(OBJ)
-	@ar -rcs $(NAME) $(OBJ) $(LIBFT)
+${NAME}: ${OBJ}
+	make -C $(LIBFTDIR)
+	${CC} ${CFLAGS} ${OBJ} -o ${NAME} ${INCLUDE}
+
+all: $(NAME)
 
 clean:
-	@$(RM) $(OBJ) $(LIBFT)
+	${RM} ${OBJ} ${NAME}
+	@cd $(LIBFTDIR) && $(MAKE) clean
 
 fclean: clean
-	@$(RM) $(NAME) $(LIBFT)
+	${RM} ${NAME}
+	@cd $(LIBFTDIR) && $(MAKE) fclean
 
 
-re: fclean all
+re: clean all
+
+.PHONY: all clean fclean re bonus

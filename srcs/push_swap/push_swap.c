@@ -1,5 +1,5 @@
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 // Errors include for example: some arguments aren’t integers,
 // some arguments are
@@ -41,6 +41,23 @@ int	check_duplicates(char **array)
 	return (0);
 }
 
+void	check_sign(char str)
+{
+	if ((str != '-' && str != '+') || !(str >= '0' && str <= '9'))
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit(1);
+	}
+}
+void	check_digit(char str)
+{
+	if (!(str >= '0' && str <= '9'))
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit(1);
+	}
+}
+
 void	check_input(char **argv_copy)
 {
 	int	i;
@@ -53,18 +70,10 @@ void	check_input(char **argv_copy)
 		j = 0;
 		while (argv_copy[i][j])
 		{
-			//TODO Plus petit plus grand je suis tout meler
-			if (j == 0 && (argv_copy[i][0] != '-' || argv_copy[i][0] != '+'
-					&& (argv_copy[i][0] >= '0' && argv_copy[i][0] <= '9')))
-			{
-				ft_putstr_fd("Error\n", 2);
-				exit(1);
-			}
-			if (j > 0 && (argv_copy[i][j] < '0' || argv_copy[i][j] > '9'))
-			{
-				ft_putstr_fd("Error\n", 2);
-				exit(1);
-			}
+			if (argv_copy[i][j] && j == 0)
+				check_sign(argv_copy[i][j]);
+			if (argv_copy[i][j] && j > 0)
+				check_digit(argv_copy[i][j]);
 			j++;
 		}
 		i++;
@@ -84,15 +93,17 @@ int	main(int argc, char **argv)
 	data = 0;
 	i = 1;
 	a = NULL;
+	if (argc <= 1)
+		return (1);
 	while (i < argc)
 	{
 		argv_copy = ft_split(argv[i], ' ');
-		check_input(argv_copy);
+
 		j = 0;
 		while (argv_copy[j])
 		{
 			data = ft_atoi(argv_copy[j]);
-			if (data < INT_MIN || data > INT_MAX)
+			if (!(data >= INT_MIN && data <= INT_MAX))
 			{
 				ft_putstr_fd("Error\n", 2);
 				exit(1);

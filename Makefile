@@ -11,7 +11,9 @@ OBJ_DIR = obj/
 SRC_DIR = srcs/
 
 SRC = srcs/push_swap/push_swap.c \
-
+			srcs/push_swap/move.c \
+			srcs/push_swap/utils.c \
+			srcs/push_swap/stack_utils.c 
 OBJ = $(SRC:.c=.o)
 
 INCLUDE = -L ./libft -lft

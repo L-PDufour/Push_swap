@@ -1,7 +1,7 @@
 #ifndef PUSH_SWAP_H
 #define PUSH_SWAP_H
 
-#include "../libft/libft.h"
+#include "../Libft42/libft.h"
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,4 +22,8 @@ void ra(t_list **stack);
 void rb(t_list **stack);
 void move_reverse_rotate(t_list **stack);
 void rr(t_list **stack_a, t_list **stack_b);
+void move_reverse_rotate(t_list **stack);
+void rra(t_list **stack);
+void rrb(t_list **stack);
+void rrr(t_list **stack_a, t_list **stack_b);
 #endif

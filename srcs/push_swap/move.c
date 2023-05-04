@@ -82,4 +82,18 @@ void move_reverse_rotate(t_list **stack) {
   *stack = last;
 }
 
-void rra(t_li)
+void rra(t_list **stack) {
+  move_reverse_rotate(stack);
+  printf("rra\n");
+}
+
+void rrb(t_list **stack) {
+  move_reverse_rotate(stack);
+  printf("rrb\n");
+}
+
+void rrr(t_list **stack_a, t_list **stack_b) {
+  move_reverse_rotate(stack_a);
+  move_reverse_rotate(stack_b);
+  printf("rrr\n");
+}

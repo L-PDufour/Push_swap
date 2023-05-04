@@ -6,7 +6,7 @@ CFLAGS =  -Wall -Wextra -Werror -g3
 
 RM = rm -f
 
-LIBFTDIR = libft/
+LIBFTDIR = Libft42/
 OBJ_DIR = obj/
 SRC_DIR = srcs/
 
@@ -16,7 +16,7 @@ SRC = srcs/push_swap/push_swap.c \
 			srcs/push_swap/stack_utils.c 
 OBJ = $(SRC:.c=.o)
 
-INCLUDE = -L ./libft -lft
+INCLUDE = -L ./Libft42/ -lft
 
 .c.o:
 	${CC} -c $< -o ${<:.c=.o}

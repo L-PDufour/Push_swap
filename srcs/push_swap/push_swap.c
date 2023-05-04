@@ -28,3 +28,4 @@ int main(int argc, char **argv) {
   return (0);
 }
 // TODO implantation de PUSH, algorythme(choix de l'algo)
+// Gerer les Cas de 1 chiffre (stack == NULL || stack->next == NULL)

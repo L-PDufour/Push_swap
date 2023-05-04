@@ -10,11 +10,17 @@ int main(int argc, char **argv) {
   if (argc <= 1)
     return (1);
   stack_a = stack_init(argc, argv, stack_a);
-  check_for_duplicates(stack_a);
-  if (check_if_sorted(stack_a) == 0)
+  // print_stack(stack_a);
+  check_for_errors(stack_a);
+  if (check_if_sorted(stack_a) == 0) {
+    ft_lstclear(&stack_a);
     return (1);
-  move_swap(stack_a);
-  move_push(stack_a, stack_b);
+  }
+  move_reverse_rotate(&stack_a);
   print_stack(stack_a);
+  // // // move_rotate(&stack_a);
+  // // ra(&stack_a);
+  // print_stack(stack_a);
+  ft_lstclear(&stack_a);
   return (0);
 }

@@ -1,8 +1,9 @@
 #include "../../includes/push_swap.h"
+#include <unistd.h>
 
 void print_stack(t_list *stack) {
   while (stack != NULL) {
-    printf("%i\n", stack->number);
+    printf("%i\n", stack->content);
     stack = stack->next;
   }
 }
@@ -16,6 +17,6 @@ void free_error(char **array, t_list *stack) {
     i++;
   }
   ft_lstclear(&stack);
-  ft_putstr_fd("Error\n", 2);
+  ft_putstr_fd("Error\n", STDERR_FILENO);
   exit(1);
 }

@@ -15,17 +15,22 @@ int main(int argc, char **argv) {
     ft_lstclear(&stack_a);
     return (1);
   }
+  if (ft_lstsize(stack_a) == 2)
+    sa(&stack_a);
+  print_stack(stack_a);
+  tiny_sort(&stack_a);
   print_stack(stack_a);
   // implantation de l'algo
   // radix_sort ou divide_conquer
   //
 
-  move_swap(stack_a);
-  move_rotate(&stack_a);
-  move_reverse_rotate(&stack_a);
-  print_stack(stack_a);
-  ft_lstclear(&stack_a);
+  /* move_swap(stack_a); */
+  /* move_rotate(&stack_a); */
+  /* move_reverse_rotate(&stack_a); */
+  /* print_stack(stack_a); */
+  // ft_lstclear(&stack_a);
+  // move_push(&stack_a, &stack_b);
+  // print_stack(stack_a);
+  //  print_stack(stack_a);
   return (0);
 }
-// TODO implantation de PUSH, algorythme(choix de l'algo)
-// Gerer les Cas de 1 chiffre (stack == NULL || stack->next == NULL)

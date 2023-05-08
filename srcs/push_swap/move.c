@@ -3,6 +3,8 @@
 void move_swap(t_list *stack) {
   int tmp;
 
+  if (stack == NULL || stack->next == NULL)
+    return;
   tmp = stack->content;
   stack->content = stack->next->content;
   stack->next->content = tmp;
@@ -24,14 +26,26 @@ void ss(t_list *stack_a, t_list *stack_b) {
   printf("ss\n");
 }
 
-void move_push(t_list *a, t_list *b) {
-  t_list *tmp;
+void move_push(t_list **stack_from, t_list **stack_to) {
 
-  if (b == NULL)
+  t_list *content_to_move;
+
+  if (*stack_from == NULL)
     return;
-  tmp = b;
-  b = b->next;
-  a = tmp;
+  content_to_move = *stack_from;
+  *stack_from = content_to_move->next;
+  content_to_move->next = *stack_to;
+  *stack_to = content_to_move;
+}
+
+void pa(t_list **stack_b, t_list **stack_a) {
+  move_push(stack_b, stack_a);
+  printf("pa\n");
+}
+
+void pb(t_list **stack_a, t_list **stack_b) {
+  move_push(stack_a, stack_b);
+  printf("pb\n");
 }
 
 void move_rotate(t_list **stack) {

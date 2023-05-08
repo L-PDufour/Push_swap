@@ -28,7 +28,7 @@ int main(int argc, char **argv) {
   /* move_rotate(&stack_a); */
   /* move_reverse_rotate(&stack_a); */
   /* print_stack(stack_a); */
-  // ft_lstclear(&stack_a);
+  ft_lstclear(&stack_a);
   // move_push(&stack_a, &stack_b);
   // print_stack(stack_a);
   //  print_stack(stack_a);

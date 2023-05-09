@@ -29,4 +29,5 @@ void rrr(t_list **stack_a, t_list **stack_b);
 void pa(t_list **stack_b, t_list **stack_a);
 void pb(t_list **stack_a, t_list **stack_b);
 void tiny_sort(t_list **stack_a);
+void big_sort(t_list **stack_a, t_list **stack_b);
 #endif

@@ -17,20 +17,12 @@ int main(int argc, char **argv) {
   }
   if (ft_lstsize(stack_a) == 2)
     sa(&stack_a);
-  print_stack(stack_a);
-  tiny_sort(&stack_a);
-  print_stack(stack_a);
-  // implantation de l'algo
-  // radix_sort ou divide_conquer
-  //
-
-  /* move_swap(stack_a); */
-  /* move_rotate(&stack_a); */
-  /* move_reverse_rotate(&stack_a); */
-  /* print_stack(stack_a); */
-  ft_lstclear(&stack_a);
-  // move_push(&stack_a, &stack_b);
   // print_stack(stack_a);
-  //  print_stack(stack_a);
+  if (ft_lstsize(stack_a) == 3)
+    tiny_sort(&stack_a);
+  big_sort(&stack_a, &stack_b);
+  print_stack(stack_a);
+  print_stack(stack_b);
+  ft_lstclear(&stack_a);
   return (0);
 }

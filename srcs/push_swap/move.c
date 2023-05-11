@@ -1,26 +1,29 @@
 #include "../../includes/push_swap.h"
 
-void move_swap(t_list *stack) {
-  int tmp;
+void move_swap(t_list **stack) {
+  t_list *node_a;
+  t_list *node_b;
 
-  if (stack == NULL || stack->next == NULL)
+  if (*stack == NULL || (*stack)->next == NULL)
     return;
-  tmp = stack->content;
-  stack->content = stack->next->content;
-  stack->next->content = tmp;
+  node_a = *stack;
+  node_b = node_a->next;
+  node_a->next = node_b->next;
+  node_b->next = node_a;
+  *stack = node_b;
 }
 
 void sa(t_list **stack) {
-  move_swap(*stack);
+  move_swap(stack);
   printf("sa\n");
 }
 
-void sb(t_list *stack) {
+void sb(t_list **stack) {
   move_swap(stack);
   printf("sb\n");
 }
 
-void ss(t_list *stack_a, t_list *stack_b) {
+void ss(t_list **stack_a, t_list **stack_b) {
   move_swap(stack_a);
   move_swap(stack_b);
   printf("ss\n");
@@ -28,14 +31,14 @@ void ss(t_list *stack_a, t_list *stack_b) {
 
 void move_push(t_list **stack_from, t_list **stack_to) {
 
-  t_list *content_to_move;
+  t_list *tmp;
 
   if (*stack_from == NULL)
     return;
-  content_to_move = *stack_from;
-  *stack_from = content_to_move->next;
-  content_to_move->next = *stack_to;
-  *stack_to = content_to_move;
+  tmp = (*stack_from)->next;
+  (*stack_from)->next = *stack_to;
+  *stack_to = *stack_from;
+  *stack_from = tmp;
 }
 
 void pa(t_list **stack_b, t_list **stack_a) {

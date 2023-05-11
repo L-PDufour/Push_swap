@@ -1,7 +1,7 @@
 #! /bin/sh
 make all
 
-./push_swap 1 5 2 4 3 
+./push_swap 12 84 49 0 51 17 44 77 97 10 
 
 # ./push_swap 3 2 1
 #

@@ -18,6 +18,8 @@
 
 typedef struct s_list {
   int content;
+  int position;
+  int rank;
   struct s_list *next;
 } t_list;
 int ft_atoi(const char *str);

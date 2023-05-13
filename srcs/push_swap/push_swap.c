@@ -1,5 +1,6 @@
 
 #include "../../includes/push_swap.h"
+#include <stdio.h>
 
 int main(int argc, char **argv) {
   t_list *stack_a;
@@ -18,10 +19,12 @@ int main(int argc, char **argv) {
   rank_final(&stack_a);
   if (ft_lstsize(stack_a) == 2)
     sa(&stack_a);
-  if (ft_lstsize(stack_a) == 3)
+  else if (ft_lstsize(stack_a) == 3)
     tiny_sort(&stack_a);
-  if (ft_lstsize(stack_a) == 5)
+  else if (ft_lstsize(stack_a) > 3 && ft_lstsize(stack_a) <= 10)
     sort_five(&stack_a, &stack_b);
+  else
+    big_sort(&stack_a, &stack_b);
   ft_lstclear(&stack_a);
   return (0);
 }

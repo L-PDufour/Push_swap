@@ -13,6 +13,7 @@ SRC_DIR = srcs/
 SRC = srcs/push_swap/push_swap.c \
 			srcs/push_swap/move.c \
 			srcs/push_swap/utils.c \
+			srcs/push_swap/sort_utils.c \
 			srcs/push_swap/sort.c \
 			srcs/push_swap/stack_utils.c 
 OBJ = $(SRC:.c=.o)

@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   move_push.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/14 14:54:01 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/14 14:54:02 by ldufour          ###   ########.fr       */
+/*   Created: 2023/05/14 14:56:22 by ldufour           #+#    #+#             */
+/*   Updated: 2023/05/14 14:57:32 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include <unistd.h>
 
-void	print_stack(t_list *stack)
+void	move_push(t_list **stack_from, t_list **stack_to)
 {
-	while (stack != NULL)
-	{
-		printf("%i\n", stack->content);
-		printf("%i\n", stack->index);
-		stack = stack->next;
-	}
+	t_list	*tmp;
+
+	if (*stack_from == NULL)
+		return ;
+	tmp = (*stack_from)->next;
+	(*stack_from)->next = *stack_to;
+	*stack_to = *stack_from;
+	*stack_from = tmp;
 }
 
-void	free_error(char **array, t_list *stack)
+void	pa(t_list **stack_b, t_list **stack_a)
 {
-	int	i;
+	move_push(stack_b, stack_a);
+	printf("pa\n");
+}
 
-	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	ft_lstclear(&stack);
-	ft_putstr_fd("Error\n", STDERR_FILENO);
-	exit(1);
+void	pb(t_list **stack_a, t_list **stack_b)
+{
+	move_push(stack_a, stack_b);
+	printf("pb\n");
 }

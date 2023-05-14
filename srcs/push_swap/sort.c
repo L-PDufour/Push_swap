@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/14 14:53:54 by ldufour           #+#    #+#             */
+/*   Updated: 2023/05/14 14:55:51 by ldufour          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/push_swap.h"
 
 void	tiny_sort(t_list **stack)
@@ -14,7 +26,7 @@ void	tiny_sort(t_list **stack)
 	if ((*stack)->rank > (*stack)->next->rank)
 		sa(stack);
 }
-// Stuck on ra. Je traverse la liste.
+
 void	big_sort(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*tmp_b;
@@ -35,7 +47,6 @@ void	big_sort(t_list **stack_a, t_list **stack_b)
 			rra(stack_a);
 		proximity++;
 	}
-	/* tiny_sort(stack_a); */
 	while ((ft_lstsize(*stack_b)) != 0)
 	{
 		pa(stack_b, stack_a);
@@ -88,3 +99,4 @@ void	sort_five(t_list **stack_a, t_list **stack_b)
 		pa(stack_b, stack_a);
 	}
 }
+/* Stuck on ra. Je traverse la liste.*/

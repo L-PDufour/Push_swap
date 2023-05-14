@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:41:13 by ldufour           #+#    #+#             */
-/*   Updated: 2023/04/26 10:19:32 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/14 15:04:36 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	worddup(char *s, char c, int i)
 }
 
 char	**ft_split(char const *s, char c)
- {
+{
 	char	**array;
 	int		i;
 	int		j;
@@ -103,5 +103,5 @@ char	**ft_split(char const *s, char c)
 // 	// 	printf("%s\n", array[i]);
 // 	// 	i++;
 // 	// }
-//     return 0;
+//     return (0);
 // }

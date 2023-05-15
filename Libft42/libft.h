@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:34:45 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/14 15:04:05 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/15 13:03:45 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_list
 	int				content;
 	int				index;
 	int				rank;
+	int				chunks;
 	struct s_list	*next;
 }					t_list;
 int					ft_atoi(const char *str);

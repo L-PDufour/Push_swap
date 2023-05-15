@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:59 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/14 15:06:47 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/15 13:05:21 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,9 @@ t_list	*stack_init(int argc, char **argv, t_list *stack)
 		i++;
 	}
 	return (stack);
+}
+
+void chunks_init(t_list **stack)
+{
+	
 }

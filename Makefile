@@ -6,7 +6,7 @@
 #    By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/14 14:53:50 by ldufour           #+#    #+#              #
-#    Updated: 2023/05/14 15:01:58 by ldufour          ###   ########.fr        #
+#    Updated: 2023/05/15 11:31:14 by ldufour          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ PUSH_SWAP = push_swap
 NAME = $(PUSH_SWAP)
 
 CC = gcc
-CFLAGS =  -Wall -Wextra -Werror -g3
+CFLAGS =  -Wall -Wextra -Werror -g
 
 RM = rm -f
 

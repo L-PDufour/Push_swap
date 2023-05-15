@@ -38,10 +38,10 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/leon/Documents/42cursus/Push_swap",
-      "program": "/home/leon/Documents/42cursus/Push_swap/build/Debug/outDebug",
-      "MIMode": "gdb",
-      "miDebuggerPath": "gdb",
+      "cwd": "/Users/ldufour/Desktop/githubperso/Push_swap",
+      "program": "/Users/ldufour/Desktop/githubperso/Push_swap/push_swap",
+      "MIMode": "lldb",
+      "miDebuggerPath": "lldb",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",

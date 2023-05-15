@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:54 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/15 15:19:15 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/15 15:46:04 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	big_sort(t_list **stack_a, t_list **stack_b)
 	i = 0;
 	total_size = ft_lstsize(*stack_a);
 	chunks = ((ft_lstsize(*stack_a)) / 8);
-	while (chunks <= (total_size - chunks))
+	while (i < 50)
 	{
 		while (i <= chunks)
 		{
@@ -96,20 +96,20 @@ void	big_sort(t_list **stack_a, t_list **stack_b)
 		}
 		chunks = chunks + chunks;
 	}
-	// give_index(*stack_b);
-	// chunks = ((ft_lstsize(*stack_b)) / 2);
-	// while (stack_b != NULL)
-	// {
-	// 	smallest_node = find_smallest_rank(stack_b);
-	// 	if (smallest_node == (*stack_b))
-	// 		pa(stack_b, stack_a);
-	// 	else if (smallest_node == (*stack_b)->next)
-	// 		sb(stack_b);
-	// 	else if (smallest_node->index < chunks)
-	// 		rb(stack_b);
-	// 	else
-	// 		rrb(stack_b);
-	// }
+	while (ft_lstsize(*stack_b) > 0)
+	{
+		smallest_node = find_highest_rank(stack_b);
+		if (smallest_node == (*stack_b))
+			pa(stack_b, stack_a);
+		else if (smallest_node == (*stack_b)->next)
+			sb(stack_b);
+		// else if (smallest_node->index < chunks)
+		// 	rb(stack_b);
+		else
+			rrb(stack_b);
+	}
+
+
 }
 
 void	find_best_node(t_list **stack, int chunks)
@@ -158,4 +158,22 @@ t_list	*find_last_node(t_list **stack, int chunks)
 		last_node = last_node->next;
 	}
 	return (last_node);
+}
+
+t_list	*find_highest_rank(t_list **stack)
+{
+	t_list	*max_node;
+	t_list	*current;
+
+	max_node = *stack;
+	current = (*stack)->next;
+	while (current != NULL)
+	{
+		if (current->rank > max_node->rank)
+		{
+			max_node = current;
+		}
+		current = current->next;
+	}
+	return (max_node);
 }

@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:54 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/15 15:46:04 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/15 20:15:52 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,46 +70,48 @@ void	sort_five(t_list **stack_a, t_list **stack_b)
 /* Stuck on ra. Je traverse la liste.*/
 void	big_sort(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*tmp_b;
-	t_list	*tmp_a;
-	int		index;
 	int		chunks;
-	t_list	*smallest_node;
 	int		total_size;
 	int		i;
 	int		chunck;
+	int		j;
+	t_list	*smallest_node;
+	int		half;
 
-	i = 0;
+	j = 1;
 	total_size = ft_lstsize(*stack_a);
-	chunks = ((ft_lstsize(*stack_a)) / 8);
-	while (i < 50)
+	chunks = ((ft_lstsize(*stack_a)) / 4);
+
+	while ((ft_lstsize(*stack_a)) > 3)
 	{
-		while (i <= chunks)
+		i = 0;
+		while (i < chunks)
 		{
 			give_index(*stack_a);
-			find_best_node(stack_a, chunks);
-			if ((*stack_a)->rank <= chunks)
+			find_best_node(stack_a, total_size * j / 4);
+			if ((*stack_a)->rank <= total_size * j / 4)
 			{
 				pb(stack_a, stack_b);
 				i++;
 			}
 		}
-		chunks = chunks + chunks;
+		j++;
+		// printf ("%i", chunks);
 	}
 	while (ft_lstsize(*stack_b) > 0)
 	{
+		half = ((ft_lstsize(*stack_b)) / 2);
+		give_index(*stack_b);
 		smallest_node = find_highest_rank(stack_b);
 		if (smallest_node == (*stack_b))
 			pa(stack_b, stack_a);
 		else if (smallest_node == (*stack_b)->next)
 			sb(stack_b);
-		// else if (smallest_node->index < chunks)
-		// 	rb(stack_b);
+		else if (smallest_node->index < half)
+			rb(stack_b);
 		else
 			rrb(stack_b);
 	}
-
-
 }
 
 void	find_best_node(t_list **stack, int chunks)

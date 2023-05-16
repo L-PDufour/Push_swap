@@ -6,7 +6,7 @@
 #    By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/14 14:53:50 by ldufour           #+#    #+#              #
-#    Updated: 2023/05/16 13:04:22 by ldufour          ###   ########.fr        #
+#    Updated: 2023/05/16 15:03:19 by ldufour          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,9 +27,9 @@ SRC = srcs/push_swap/push_swap.c \
 			srcs/push_swap/move_push.c \
 			srcs/push_swap/move_rotate.c \
 			srcs/push_swap/move_reverse_rotate.c \
-			srcs/push_swap/utils.c \
 			srcs/push_swap/sort_utils.c \
-			srcs/push_swap/sort.c \
+			srcs/push_swap/tiny_sort.c \
+			srcs/push_swap/medium_sort.c \
 			srcs/push_swap/parsing.c
 OBJ = $(SRC:.c=.o)
 

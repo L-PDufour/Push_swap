@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:47 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/14 14:53:48 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/16 08:10:35 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	rank_final(t_list **stack)
 	}
 }
 
-int	give_index(t_list *stack)
+int	update_index(t_list *stack)
 {
 	t_list	*tmp;
 	int		index;

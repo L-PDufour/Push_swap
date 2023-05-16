@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:41:13 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/14 15:04:36 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/16 12:55:51 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,23 +85,3 @@ char	**ft_split(char const *s, char c)
 	return (array);
 }
 
-// int main(void)
-// {
-// 	char **array;
-//     char str[] = "this is a test";
-//     char delimiter = ' ';
-//     int i = 0;
-// 	printf("%d\n", i);
-//     array = ft_split(0, 0);
-// 	printf("%s\n", array[0]);
-// 	// printf("%s\n", array[1]);
-// 	// printf("%s\n", array[2]);
-// 	// printf("%s\n", array[3]);
-
-// 	// while (i < 3)
-// 	// {
-// 	// 	printf("%s\n", array[i]);
-// 	// 	i++;
-// 	// }
-//     return (0);
-// }

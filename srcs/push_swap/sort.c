@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:54 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/16 11:18:15 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/16 12:48:05 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	medium_sort(t_list **stack_a, t_list **stack_b)
 			rra(stack_a);
 	}
 	tiny_sort(stack_a);
-	while ((ft_lstsize(stack_b)) != 0)
+	while ((ft_lstsize(*stack_b)) != 0)
 		pa(stack_b, stack_a);
 }
 /* Stuck on ra. Je traverse la liste.*/
@@ -92,7 +92,7 @@ void	big_sort(t_list **stack_a, t_list **stack_b)
 		}
 		j++;
 	}
-	while (ft_lstsize(*stack_b) > 0)
+	while (ft_lstsize(*stack_b) != 0)
 	{
 		update_index(*stack_b);
 		smallest_node = find_highest_rank(stack_b);

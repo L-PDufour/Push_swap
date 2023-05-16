@@ -6,7 +6,7 @@
 #    By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/14 14:53:50 by ldufour           #+#    #+#              #
-#    Updated: 2023/05/15 11:31:14 by ldufour          ###   ########.fr        #
+#    Updated: 2023/05/16 13:04:22 by ldufour          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRC = srcs/push_swap/push_swap.c \
 			srcs/push_swap/utils.c \
 			srcs/push_swap/sort_utils.c \
 			srcs/push_swap/sort.c \
-			srcs/push_swap/stack_utils.c
+			srcs/push_swap/parsing.c
 OBJ = $(SRC:.c=.o)
 
 INCLUDE = -L ./Libft42/ -lft

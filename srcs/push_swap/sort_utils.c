@@ -6,57 +6,62 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:47 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/16 15:02:46 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/17 16:49:57 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	find_best_node(t_list **stack, int chunks)
+void	find_best_node(t_list **stack_a, t_list **stack_b, int chunks)
 {
 	t_list	*first_node;
 	t_list	*last_node;
+	t_list	*max_node;
+	t_list	*bottom;
 
-	update_index(*stack);
-	first_node = find_first_node(stack, chunks);
-	last_node = find_last_node(stack, chunks);
-	if ((first_node->index) <= (ft_lstsize(*stack) - last_node->index))
-	{
-		while (first_node != (*stack))
-			ra(stack);
-	}
+	max_node = find_highest_rank(stack_b);
+	update_index(*stack_a);
+	first_node = find_first_node(stack_a, chunks);
+	last_node = find_last_node(stack_a, chunks);
+	if ((first_node->index) <= (ft_lstsize(*stack_a) - last_node->index))
+		while (*stack_a != first_node)
+			ra(stack_a);
 	else
-	{
-		while (last_node != (*stack))
-			rra(stack);
-	}
+		while (*stack_a != last_node)
+			rra(stack_a);
 }
 
 t_list	*find_first_node(t_list **stack, int chunks)
 {
 	t_list	*first_node;
+	t_list	*current_node;
 
-	first_node = *stack;
-	while (first_node != NULL)
+	first_node = NULL;
+	current_node = *stack;
+	while (current_node != NULL)
 	{
-		if (first_node->rank <= chunks)
+		if (current_node->rank <= chunks)
+		{
+			first_node = current_node;
 			break ;
-		else
-			first_node = first_node->next;
+		}
+		current_node = current_node->next;
 	}
 	return (first_node);
 }
 
 t_list	*find_last_node(t_list **stack, int chunks)
 {
+	t_list	*current_node;
 	t_list	*last_node;
 
-	last_node = *stack;
-	while (last_node->next != NULL)
+	last_node = NULL;
+	current_node = *stack;
+	while (current_node != NULL)
 	{
-		if (last_node->rank <= chunks)
-			last_node = last_node;
-		last_node = last_node->next;
+		if (current_node->rank <= chunks)
+			last_node = current_node;
+		current_node = current_node->next;
 	}
 	return (last_node);
 }
@@ -66,6 +71,8 @@ t_list	*find_highest_rank(t_list **stack)
 	t_list	*max_node;
 	t_list	*current;
 
+	if (*stack == NULL)
+		return (NULL);
 	max_node = *stack;
 	current = (*stack)->next;
 	while (current != NULL)
@@ -78,6 +85,7 @@ t_list	*find_highest_rank(t_list **stack)
 	}
 	return (max_node);
 }
+
 int	update_index(t_list *stack)
 {
 	t_list	*tmp;
@@ -110,4 +118,74 @@ t_list	*find_smallest_rank(t_list **stack_a)
 		current = current->next;
 	}
 	return (min_node);
+}
+void	count_steps_a(t_list *stack_a)
+{
+	int	steps;
+	int	size;
+
+	size = ft_lstsize(stack_a);
+	steps = 0;
+	while (stack_a != NULL)
+	{
+		if (steps <= (size / 2))
+			stack_a->steps_a = steps;
+		else
+			stack_a->steps_a = steps - size;
+		stack_a = stack_a->next;
+		steps++;
+	}
+}
+
+void	count_steps_b(t_list *stack_b)
+{
+	int	steps;
+	int	size;
+
+	size = ft_lstsize(stack_b);
+	steps = 0;
+	while (stack_b != NULL)
+	{
+		if (steps <= (size / 2))
+			stack_b->steps_b = steps;
+		else
+			stack_b->steps_b = steps - size;
+		stack_b = stack_b->next;
+		steps++;
+	}
+}
+void	chunk_init(t_list **stack_a)
+{
+	t_list	*head;
+	int		nbr_of_chunks;
+	int		chunk_size;
+	int		total_size;
+	int		chunks_count;
+	int		j;
+
+	j = 1;
+	total_size = ft_lstsize(*stack_a);
+	nbr_of_chunks = (int)((float)total_size * 0.02 + 3);
+	chunk_size = (int)((float)total_size / nbr_of_chunks);
+	while (j <= nbr_of_chunks)
+	{
+		head = *stack_a;
+		chunks_count = total_size * j / nbr_of_chunks;
+		while (head->next != NULL)
+		{
+			if (head->rank > chunks_count)
+				head->chunk = j;
+			head = head->next;
+		}
+		j++;
+	}
+}
+void	print_stack(t_list *stack)
+{
+	while (stack != NULL)
+	{
+		printf("%i\n", stack->chunk);
+		// printf("%i\n", stack->index);
+		stack = stack->next;
+	}
 }

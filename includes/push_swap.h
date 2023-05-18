@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:06:03 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/17 16:04:01 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/17 19:47:51 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ void	error(t_list *stack);
 void	free_error(char **array, t_list *stack);
 void	chunk_init(t_list **stack_a);
 void	print_stack(t_list *stack);
-
+int find_my_thing (t_list *stack, char *str);
 #endif

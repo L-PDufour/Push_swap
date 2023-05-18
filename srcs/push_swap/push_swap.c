@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:44 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/17 16:57:03 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/17 20:24:44 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	int size;
+	int		size;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -98,15 +98,15 @@ int	main(int argc, char **argv)
 	rank_final(&stack_a);
 	chunk_init(&stack_a);
 	print_stack(stack_a);
-	// size = ft_lstsize(stack_a);
-	// if (size == 2)
-	// 	sa(&stack_a);
-	// else if (size == 3)
-	// 	tiny_sort(&stack_a);
-	// else if (size > 3 && size <= 10)
-	// 	medium_sort(&stack_a, &stack_b);
-	// else
-	// 	big_sort(&stack_a, &stack_b);
-	// ft_lstclear(&stack_a);
+	size = ft_lstsize(stack_a);
+	if (size == 2)
+		sa(&stack_a);
+	else if (size == 3)
+		tiny_sort(&stack_a);
+	else if (size > 3 && size <= 10)
+		medium_sort(&stack_a, &stack_b);
+	else
+		big_sort(&stack_a, &stack_b);
+	ft_lstclear(&stack_a);
 	return (0);
 }

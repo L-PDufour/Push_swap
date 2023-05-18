@@ -6,27 +6,28 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:59 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/16 14:55:57 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/18 14:44:04 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include <limits.h>
-#include <unistd.h>
 
-int	check_if_sorted(t_list *stack)
+
+bool check_if_sorted(t_list *stack)
 {
-	int	i;
+	if (stack == NULL || stack->next == NULL)
+		return true;
 
-	i = 0;
 	while (stack->next != NULL)
 	{
 		if (stack->content > stack->next->content)
-			i++;
+			return false;
 		stack = stack->next;
 	}
-	return (i);
+	return true;
 }
+
+
 
 void	check_for_duplicates(t_list *stack)
 {
@@ -45,23 +46,54 @@ void	check_for_duplicates(t_list *stack)
 	}
 }
 
-void check_if_int(t_list *stack)
+bool check_if_int(t_list *stack)
 {
-	if (stack == NULL)
-		return;
-
 	while (stack != NULL)
 	{
-		if (!(stack->content <= INT_MAX && stack->content >= INT_MIN))
-			error(stack);
+		if (stack->content < INT_MIN || stack->content > INT_MAX)
+			return false;
 		stack = stack->next;
 	}
+
+	return true;
 }
+
 
 void	parsing(t_list *stack)
 {
-	check_if_int(stack);
+	if (!check_if_int(stack))
+	{
+		error(stack);
+		exit(0);
+	}
 	check_for_duplicates(stack);
-	if (check_if_sorted(stack) == 1)
-		exit (1);
+	if (check_if_sorted(stack))
+	{
+		ft_lstfree(stack);
+		exit(0);
+	}
+}
+
+void	chunk_init(t_list **stack_a)
+{
+	t_list	*head;
+	int		nbr_of_chunks;
+	int		chunk_size;
+	int		chunks_count;
+	int		j;
+
+	j = 1;
+	nbr_of_chunks = (int)((float)ft_lstsize(*stack_a) * 0.02 + 3);
+	while (j <= nbr_of_chunks)
+	{
+		head = *stack_a;
+		chunks_count = ft_lstsize(*stack_a) * j / nbr_of_chunks;
+		while (head->next != NULL)
+		{
+			if (head->rank > chunks_count)
+				head->chunk = j;
+			head = head->next;
+		}
+		j++;
+	}
 }

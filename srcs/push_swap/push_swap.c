@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:44 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/17 20:24:44 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/18 15:02:23 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ void	free_error(char **array, t_list *stack)
 		free(array[i]);
 		i++;
 	}
-	ft_lstclear(&stack);
+	ft_lstfree(stack);
 	ft_putstr_fd("Error\n", STDERR_FILENO);
 	exit(1);
 }
 
 void	error(t_list *stack)
 {
-	ft_lstclear(&stack);
+	ft_lstfree(stack);
 	ft_putstr_fd("Error\n", STDERR_FILENO);
 	exit(1);
 }
@@ -62,7 +62,6 @@ t_list	*stack_init(int argc, char **argv, t_list *stack)
 	char	**argv_copy;
 	t_list	*new_node;
 
-	data = 0;
 	i = 1;
 	while (i < argc)
 	{
@@ -71,18 +70,30 @@ t_list	*stack_init(int argc, char **argv, t_list *stack)
 		while (argv_copy[j])
 		{
 			data = ft_atoi(argv_copy[j]);
+			if (data < INT_MIN || data > INT_MAX)
+				exit;
 			free(argv_copy[j]);
 			new_node = ft_lstnew(data);
 			ft_lstadd_back(&stack, new_node);
 			j++;
 		}
 		free(argv_copy);
+		// parsing(stack);
 		argv_copy = NULL;
 		i++;
 	}
 	return (stack);
 }
 
+void	print_stack(t_list *stack)
+{
+	while (stack != NULL)
+	{
+		printf("%i\n", stack->content);
+		stack = stack->next;
+	}
+}
+// leaks dans ak 1 string still reachable ak chiffre
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
@@ -99,6 +110,8 @@ int	main(int argc, char **argv)
 	chunk_init(&stack_a);
 	print_stack(stack_a);
 	size = ft_lstsize(stack_a);
+	if (check_if_sorted(stack_a))
+		ft_lstfree(stack_a);
 	if (size == 2)
 		sa(&stack_a);
 	else if (size == 3)
@@ -107,6 +120,7 @@ int	main(int argc, char **argv)
 		medium_sort(&stack_a, &stack_b);
 	else
 		big_sort(&stack_a, &stack_b);
-	ft_lstclear(&stack_a);
+	ft_lstfree(stack_a);
+	ft_lstfree(stack_b);
 	return (0);
 }

@@ -5,12 +5,61 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 14:59:13 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/17 21:02:52 by ldufour          ###   ########.fr       */
+/*   Created: 2023/05/18 11:00:36 by ldufour           #+#    #+#             */
+/*   Updated: 2023/05/18 13:04:13 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+void	calculate_move_cost(t_list *stack)
+{
+	int	size;
+	int	move_cost;
+
+	size = ft_lstsize(stack);
+	move_cost = 0;
+	while (stack != NULL)
+	{
+		if (move_cost <= (size / 2))
+			stack->cost = move_cost;
+		if (move_cost > (size / 2))
+			stack->cost = size - move_cost;
+		stack = stack->next;
+		move_cost++;
+	}
+}
+
+int find_small_chunk(t_list *stack)
+{
+	int min = 1000;
+
+	while (stack != NULL)
+	{
+		if (stack->chunk <= min)
+			min = stack->chunk;
+		stack = stack->next;
+	}
+
+	return min;
+}
+
+
+void	big_sort_stack_b(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*biggest_node;
+
+	count_steps(*stack_b);
+	biggest_node = find_highest_rank(stack_b);
+	if (biggest_node == (*stack_b))
+		pa(stack_b, stack_a);
+	else if (biggest_node == (*stack_b)->next)
+		sb(stack_b);
+	else if (biggest_node->steps >= 0)
+		rb(stack_b);
+	else
+		rrb(stack_b);
+}
 
 void	medium_sort(t_list **stack_a, t_list **stack_b)
 {
@@ -18,13 +67,13 @@ void	medium_sort(t_list **stack_a, t_list **stack_b)
 
 	while ((ft_lstsize(*stack_a)) > 3)
 	{
-		count_steps_a(*stack_a);
+		count_steps(*stack_a);
 		smallest_node = find_smallest_rank(stack_a);
 		if (smallest_node == (*stack_a))
 			pb(stack_a, stack_b);
 		else if (smallest_node == (*stack_a)->next)
 			sa(stack_a);
-		else if (smallest_node->steps_a >= 0)
+		else if (smallest_node->steps >= 0)
 			ra(stack_a);
 		else
 			rra(stack_a);
@@ -34,71 +83,29 @@ void	medium_sort(t_list **stack_a, t_list **stack_b)
 		pa(stack_b, stack_a);
 }
 
-int	find_max_chunk(t_list *stack)
-{
-	int	max;
-
-	max = stack->chunk;
-	stack = stack->next;
-	while (stack != NULL && stack->next != NULL)
-	{
-		if (stack->chunk > max)
-			max = stack->chunk;
-		stack = stack->next;
-	}
-	return (max);
-}
-int	find_small_chunk(t_list *stack)
-{
-	int	min;
-
-	min = stack->chunk;
-	while (stack != NULL && stack->next != NULL)
-	{
-		if (stack->chunk <= min)
-			min = stack->chunk;
-		stack = stack->next;
-	}
-	return (min);
-}
-
 void	big_sort(t_list **stack_a, t_list **stack_b)
 {
-	int	chunks_count;
-	int	max;
-	int	min;
+	int	len;
+	int	i;
+	int	chunks;
 
-	min = 2;
-	max = find_max_chunk(*stack_a);
-	chunks_count = 0;
-	while ((ft_lstsize(*stack_a)) > 0)
+    if (stack_a == NULL || stack_b == NULL)
+        return;
+	len = ft_lstsize(*stack_a);
+	i = 0;
+	while (i < len)
 	{
-		min = find_small_chunk(*stack_a);
-		if ((*stack_a)->chunk <= min)
+		chunks = find_small_chunk(*stack_a);
+		if ((*stack_a)->chunk <= chunks)
 		{
-			pb(stack_a, stack_b); // Segfault ici segfault alert.
+			pb(stack_a, stack_b);
+			i++;
 		}
-		else if ((*stack_a)->next != NULL && (*stack_a)->next->chunk <= min)
+		else if ((*stack_a)->next != NULL && (*stack_a)->next->chunk <= chunks)
 			sa(stack_a);
 		else
-			find_best_node(stack_a, stack_b, min);
+			find_best_node(stack_a, stack_b, chunks);
 	}
 	while (ft_lstsize(*stack_b) != 0)
 		big_sort_stack_b(stack_a, stack_b);
-}
-
-void	big_sort_stack_b(t_list **stack_a, t_list **stack_b)
-{
-	t_list	*biggest_node;
-
-	count_steps_b(*stack_b);
-	biggest_node = find_highest_rank(stack_b);
-	if (biggest_node == (*stack_b))
-		pa(stack_b, stack_a);
-	else if (biggest_node == (*stack_b)->next)
-		sb(stack_b);
-	else if (biggest_node->steps_b >= 0)
-		rb(stack_b);
-	else
-		rrb(stack_b);
 }

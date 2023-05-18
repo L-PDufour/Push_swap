@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:56:22 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/17 20:58:04 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/18 11:02:18 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	move_push(t_list **stack_from, t_list **stack_to)
 {
 	t_list	*tmp;
 
-	// if (*stack_from == NULL)
-	// 	return ;
+	if (*stack_from == NULL)
+		return ;
 	tmp = *stack_to;
-	*stack_to= *stack_from;
+	*stack_to = *stack_from;
 	*stack_from = (*stack_from)->next;
 	(*stack_to)->next = tmp;
 }

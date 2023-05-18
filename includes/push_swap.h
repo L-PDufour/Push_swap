@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:06:03 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/17 19:47:51 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/18 14:42:29 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../Libft42/libft.h"
 # include <limits.h>
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -34,10 +35,9 @@ void	rrr(t_list **stack_a, t_list **stack_b);
 void	move_push(t_list **stack_from, t_list **stack_to);
 void	pa(t_list **stack_b, t_list **stack_a);
 void	pb(t_list **stack_a, t_list **stack_b);
-int		check_if_sorted(t_list *stack);
+bool	check_if_sorted(t_list *stack);
+bool	check_if_int(t_list *stack);
 void	check_for_duplicates(t_list *stack);
-t_list	*stack_create(int data, char **argv_copy, int j, t_list *new_node,
-			t_list *stack);
 void	parsing(t_list *stack);
 t_list	*stack_init(int argc, char **argv, t_list *stack);
 void	tiny_sort(t_list **stack_a);
@@ -45,12 +45,9 @@ void	medium_sort(t_list **stack_a, t_list **stack_b);
 void	big_sort(t_list **stack_a, t_list **stack_b);
 void	big_sort_stack_b(t_list **stack_a, t_list **stack_b);
 t_list	*find_smallest_rank(t_list **stack_a);
-int		update_index(t_list *stack);
-t_list	*find_best_rank(t_list **stack_a, int key_nbr);
 void	rank_final(t_list **stack);
 int		find_highest_position(t_list *stack);
-void	count_steps_a(t_list *stack_a);
-void	count_steps_b(t_list *stack_b);
+void	count_steps(t_list *stack);
 void	find_best_node(t_list **stack_a, t_list **stack_b, int chunks);
 t_list	*find_last_node(t_list **stack, int chunks);
 t_list	*find_first_node(t_list **stack, int chunks);
@@ -58,6 +55,7 @@ t_list	*find_highest_rank(t_list **stack);
 void	error(t_list *stack);
 void	free_error(char **array, t_list *stack);
 void	chunk_init(t_list **stack_a);
-void	print_stack(t_list *stack);
-int find_my_thing (t_list *stack, char *str);
+void	calculate_move_cost(t_list *stack);
+void	ft_lstfree(t_list *list);
+
 #endif

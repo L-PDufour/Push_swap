@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:34:45 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/17 15:34:00 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/18 15:10:03 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 typedef struct s_list
 {
-	int				content;
-	int				index;
+	long				content;
 	int				rank;
-	int				steps_a;
-	int				steps_b;
+	int				cost;
+	int				steps;
 	int				chunk;
 	struct s_list	*next;
 }					t_list;
-int					ft_atoi(const char *str);
+					ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t nmemb, size_t size);
 int					ft_isalnum(int c);

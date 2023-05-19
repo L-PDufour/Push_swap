@@ -6,11 +6,11 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:59 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/19 11:37:36 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/19 14:41:09 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 bool	check_if_sorted(t_list *stack)
 {

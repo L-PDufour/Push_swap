@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:06:03 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/19 10:57:25 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/19 14:43:03 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 typedef struct s_list
 {
-	int			content;
+	int				content;
 	int				rank;
 	int				cost;
 	int				steps;
@@ -56,8 +56,7 @@ t_list				*find_smallest_rank(t_list **stack_a);
 void				rank_final(t_list **stack);
 int					find_highest_position(t_list *stack);
 void				count_steps(t_list *stack);
-void				find_best_node(t_list **stack_a, t_list **stack_b,
-						int chunks);
+void				find_best_node(t_list **stack_a, int chunks);
 t_list				*find_last_node(t_list **stack, int chunks);
 t_list				*find_first_node(t_list **stack, int chunks);
 t_list				*find_highest_rank(t_list **stack);
@@ -76,6 +75,6 @@ t_list				*ft_lstnew(int content);
 int					ft_lstsize(t_list *lst);
 size_t				ft_strlen(const char *s);
 int					ft_isdigit(int c);
-void	ft_putstr_fd(char *s, int fd);
+void				ft_putstr_fd(char *s, int fd);
 
 #endif

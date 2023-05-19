@@ -6,7 +6,7 @@
 #    By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/14 14:53:50 by ldufour           #+#    #+#              #
-#    Updated: 2023/05/19 11:37:25 by ldufour          ###   ########.fr        #
+#    Updated: 2023/05/19 14:14:35by ldufour          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,40 +18,43 @@ CFLAGS =  -Wall -Wextra -Werror -g
 
 RM = rm -f
 
-OBJ_DIR = obj/
-SRC_DIR = srcs/
-SHR_DIR = shared/
+OBJS_DIR = obj
+SRCS_DIR = srcs
+SHR_DIR = shared
 
-SRC = srcs/push_swap/push_swap.c \
-			srcs/push_swap/move_swap.c \
-			srcs/push_swap/move_push.c \
-			srcs/push_swap/move_rotate.c \
-			srcs/push_swap/move_reverse_rotate.c \
-			srcs/push_swap/sort_utils.c \
-			srcs/push_swap/sort_utils2.c \
-			srcs/push_swap/tiny_sort.c \
-			srcs/push_swap/medium_sort.c \
-			srcs/push_swap/parsing.c \
-			srcs/push_swap/parsing2.c \
-			srcs/push_swap/struct.c
+SRCS = srcs/push_swap.c \
+			srcs/move_swap.c \
+			srcs/move_push.c \
+			srcs/move_rotate.c \
+			srcs/move_reverse_rotate.c \
+			srcs/sort_utils.c \
+			srcs/sort_utils2.c \
+			srcs/tiny_sort.c \
+			srcs/medium_sort.c \
+			srcs/parsing.c \
+			srcs/parsing2.c \
+			srcs/struct.c
 
 SHR = shared/ft_split.c \
 			shared/libft_utils.c \
 			shared/ft_lst.c
 
-OBJ = $(SRC:.c=.o) $(SHR:.c=.o)
-# OBJ = $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o) $(SHR:$(SHR_DIR)%.c=$(OBJ_DIR)%.o)
+OBJS = $(patsubst $(SRCS_DIR)/%.c,$(OBJS_DIR)/%.o,$(SRCS)$)
 
 .c.o:
-	${CC} -c $< -o ${<:.c=.o}
-
-${NAME}: ${OBJ}
-	${CC} ${CFLAGS} ${OBJ} -o ${NAME}
+	${CC} -c $< -o ${OBJS_DIR}/${<F:.c=.o}
 
 all: $(NAME)
 
+${NAME}: ${OBJS} ${SHR}
+	${CC} ${CFLAGS} $^ -o $@
+
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
+	mkdir -p $(OBJS_DIR)
+	${CC} ${CFLAGS} -c $< -o $@
+
 clean:
-	${RM} ${OBJ} ${NAME}
+	${RM} ${OBJS_DIR} ${NAME}
 
 fclean: clean
 	${RM} ${NAME}

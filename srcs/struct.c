@@ -6,17 +6,16 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:36:55 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/19 13:00:09 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/19 14:43:51 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 void	chunk_init(t_list **stack_a)
 {
 	t_list	*head;
 	int		nbr_of_chunks;
-	int		chunk_size;
 	int		chunks_count;
 	int		j;
 

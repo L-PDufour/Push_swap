@@ -6,11 +6,11 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:36:21 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/19 11:00:30 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/19 14:41:14 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 void	free_error(char **array, t_list *stack)
 {

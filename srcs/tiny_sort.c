@@ -6,11 +6,11 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:56:42 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/18 20:30:38 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/19 14:41:35 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 void	ft_lstfree(t_list *list)
 {

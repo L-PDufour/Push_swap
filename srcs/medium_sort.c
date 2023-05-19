@@ -6,11 +6,11 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:00:36 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/19 13:28:37 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/19 14:43:37 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 void	calculate_move_cost(t_list *stack)
 {
@@ -56,7 +56,7 @@ void	big_sort_stack_b(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*biggest_node;
 
-	better_sb(stack_b);
+	// better_sb(stack_b);
 	count_steps(*stack_b);
 	biggest_node = find_highest_rank(stack_b);
 	if (biggest_node == (*stack_b))
@@ -109,10 +109,19 @@ void	big_sort(t_list **stack_a, t_list **stack_b)
 		if ((*stack_a)->chunk <= chunks)
 		{
 			pb(stack_a, stack_b);
+			// rb(stack_b);
 			i++;
-		}	
+
+		}
+		// else if((*stack_a)->chunk <= chunks + 1)
+		// {
+		// 	pb(stack_a, stack_b);
+		// 	rrb(stack_b)
+		// 	i++;
+
+		// }
 		else
-			find_best_node(stack_a, stack_b, chunks);
+			find_best_node(stack_a, chunks);
 	}
 	while (ft_lstsize(*stack_b) != 0)
 		big_sort_stack_b(stack_a, stack_b);

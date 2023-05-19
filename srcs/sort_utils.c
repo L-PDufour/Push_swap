@@ -6,11 +6,11 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:47 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/18 10:55:59 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/19 14:41:20 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 t_list	*find_highest_rank(t_list **stack)
 {

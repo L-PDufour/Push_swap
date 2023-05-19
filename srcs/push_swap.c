@@ -6,11 +6,11 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:44 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/19 11:01:05 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/19 14:41:17 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 void	rank_final(t_list **stack)
 {

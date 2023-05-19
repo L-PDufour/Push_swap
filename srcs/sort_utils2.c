@@ -6,13 +6,24 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:54:06 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/18 10:58:07 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/19 14:42:11 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../includes/push_swap.h"
 
-void	find_best_node(t_list **stack_a, t_list **stack_b, int chunks)
+void	better_sa(t_list **stack_a)
+{
+	if (stack_a == NULL || (*stack_a)->next == NULL)
+		return ;
+	if (((*stack_a)->chunk == (*stack_a)->next->chunk)
+		&& ((*stack_a)->rank < (*stack_a)->next->rank))
+		sa(stack_a);
+	// if ((*stack_a)->rank < (*stack_a)->next->rank)
+	// 	sa(stack_a);
+}
+
+void	find_best_node(t_list **stack_a, int chunks)
 {
 	t_list	*first_node;
 	t_list	*last_node;
@@ -22,10 +33,16 @@ void	find_best_node(t_list **stack_a, t_list **stack_b, int chunks)
 	last_node = find_last_node(stack_a, chunks);
 	if (first_node->cost <= last_node->cost)
 		while (*stack_a != first_node)
+		{
+			// better_sa(stack_a);
 			ra(stack_a);
+		}
 	else
 		while (*stack_a != last_node)
+		{
+			better_sa(stack_a);
 			rra(stack_a);
+		}
 }
 
 t_list	*find_first_node(t_list **stack, int chunks)

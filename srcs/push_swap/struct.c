@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   struct.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/06 08:33:17 by ldufour           #+#    #+#             */
-/*   Updated: 2023/03/06 08:33:20 by ldufour          ###   ########.fr       */
+/*   Created: 2023/05/19 11:36:55 by ldufour           #+#    #+#             */
+/*   Updated: 2023/05/19 13:00:09 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/push_swap.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	chunk_init(t_list **stack_a)
 {
-	char	*str;
-	int		i;
+	t_list	*head;
+	int		nbr_of_chunks;
+	int		chunk_size;
+	int		chunks_count;
 	int		j;
 
-	i = 0;
 	j = 0;
-	if (!s1 || !s2)
-		return (NULL);
-	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!str)
-		return (NULL);
-	while (s1[i] != '\0')
+	nbr_of_chunks = (int)((float)ft_lstsize(*stack_a) * 0.02 + 3);
+	while (j <= nbr_of_chunks)
 	{
-		str[i] = s1[i];
-		i++;
-	}
-	while (s2[j] != '\0')
-	{
-		str[i] = s2[j];
-		i++;
+		head = *stack_a;
+		chunks_count = ft_lstsize(*stack_a) * j / nbr_of_chunks;
+		while (head != NULL)
+		{
+			if (head->rank > chunks_count)
+				head->chunk = j;
+			head = head->next;
+		}
 		j++;
 	}
-	str[i] = '\0';
-	return (str);
 }

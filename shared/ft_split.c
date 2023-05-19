@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 14:41:13 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/16 12:55:51 by ldufour          ###   ########.fr       */
+/*   Created: 2023/05/19 09:42:25 by ldufour           #+#    #+#             */
+/*   Updated: 2023/05/19 09:59:43 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/push_swap.h"
 
 static int	width(char const *s, char c)
 {
@@ -84,4 +84,3 @@ char	**ft_split(char const *s, char c)
 	}
 	return (array);
 }
-

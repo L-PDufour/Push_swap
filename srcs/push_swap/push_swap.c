@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:44 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/18 20:56:05 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/19 11:01:05 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,14 +88,14 @@ t_list	*stack_init(int argc, char **argv, t_list *stack)
 	return (stack);
 }
 
-void	print_stack(t_list *stack)
-{
-	while (stack != NULL)
-	{
-		printf("%i\n", stack->content);
-		stack = stack->next;
-	}
-}
+// void	print_stack(t_list *stack)
+// {
+// 	while (stack != NULL)
+// 	{
+// 		printf("%i\n", stack->content);
+// 		stack = stack->next;
+// 	}
+// }
 // leaks dans ak 1 string still reachable ak chiffre
 
 int	main(int argc, char **argv)

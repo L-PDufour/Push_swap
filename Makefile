@@ -6,7 +6,7 @@
 #    By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/14 14:53:50 by ldufour           #+#    #+#              #
-#    Updated: 2023/05/18 20:39:10 by ldufour          ###   ########.fr        #
+#    Updated: 2023/05/19 11:37:25 by ldufour          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ CFLAGS =  -Wall -Wextra -Werror -g
 
 RM = rm -f
 
-LIBFTDIR = Libft42/
 OBJ_DIR = obj/
 SRC_DIR = srcs/
+SHR_DIR = shared/
 
 SRC = srcs/push_swap/push_swap.c \
 			srcs/push_swap/move_swap.c \
@@ -32,27 +32,29 @@ SRC = srcs/push_swap/push_swap.c \
 			srcs/push_swap/tiny_sort.c \
 			srcs/push_swap/medium_sort.c \
 			srcs/push_swap/parsing.c \
-			srcs/push_swap/parsing2.c
-OBJ = $(SRC:.c=.o)
+			srcs/push_swap/parsing2.c \
+			srcs/push_swap/struct.c
 
-INCLUDE = -L ./Libft42/ -lft
+SHR = shared/ft_split.c \
+			shared/libft_utils.c \
+			shared/ft_lst.c
+
+OBJ = $(SRC:.c=.o) $(SHR:.c=.o)
+# OBJ = $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o) $(SHR:$(SHR_DIR)%.c=$(OBJ_DIR)%.o)
 
 .c.o:
 	${CC} -c $< -o ${<:.c=.o}
 
 ${NAME}: ${OBJ}
-	make -C $(LIBFTDIR)
-	${CC} ${CFLAGS} ${OBJ} -o ${NAME} ${INCLUDE}
+	${CC} ${CFLAGS} ${OBJ} -o ${NAME}
 
 all: $(NAME)
 
 clean:
 	${RM} ${OBJ} ${NAME}
-	@cd $(LIBFTDIR) && $(MAKE) clean
 
 fclean: clean
 	${RM} ${NAME}
-	@cd $(LIBFTDIR) && $(MAKE) fclean
 
 
 re: clean all

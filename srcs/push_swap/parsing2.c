@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:36:21 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/18 20:56:11 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/19 11:00:30 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	free_error(char **array, t_list *stack)
 		free(array[i]);
 		i++;
 	}
+	free(array);
 	ft_lstfree(stack);
 	ft_putstr_fd("Error\n", STDERR_FILENO);
 	exit(0);
@@ -36,14 +37,12 @@ void	error(t_list *stack)
 
 void	check_for_digit(char *str, char **array, t_list *stack)
 {
+	if (*str == 45)
+		str++;
 	while (*str != '\0')
 	{
 		if (*str < '0' || *str > '9')
-		{
-			// free(str);
 			free_error(array, stack);
-		}
 		str++;
 	}
-	// free(str);
 }

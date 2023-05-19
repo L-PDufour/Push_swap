@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:00:36 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/18 20:40:11 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/19 13:28:37 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,32 @@ int	find_small_chunk(t_list *stack)
 	return (min);
 }
 
+void better_sb(t_list **stack_b)
+{
+	if (stack_b == NULL || (*stack_b)->next == NULL)
+		return;
+	if (((*stack_b)->chunk == (*stack_b)->next->chunk) && ((*stack_b)->rank < (*stack_b)->next->rank))
+		sb (stack_b);
+}
+
 void	big_sort_stack_b(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*biggest_node;
 
+	better_sb(stack_b);
 	count_steps(*stack_b);
 	biggest_node = find_highest_rank(stack_b);
 	if (biggest_node == (*stack_b))
 		pa(stack_b, stack_a);
-	else if (biggest_node == (*stack_b)->next)
-		sb(stack_b);
+		// else if (biggest_node == (*stack_b)->next)
+		// 	sb(stack_b);
 	else if (biggest_node->steps >= 0)
 		rb(stack_b);
 	else
 		rrb(stack_b);
 }
+
+
 
 void	medium_sort(t_list **stack_a, t_list **stack_b)
 {
@@ -99,9 +110,7 @@ void	big_sort(t_list **stack_a, t_list **stack_b)
 		{
 			pb(stack_a, stack_b);
 			i++;
-		}
-		else if ((*stack_a)->next != NULL && (*stack_a)->next->chunk <= chunks)
-			sa(stack_a);
+		}	
 		else
 			find_best_node(stack_a, stack_b, chunks);
 	}

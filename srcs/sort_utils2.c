@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:54:06 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/19 14:42:11 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/19 15:32:56 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	better_sa(t_list **stack_a)
 	if (stack_a == NULL || (*stack_a)->next == NULL)
 		return ;
 	if (((*stack_a)->chunk == (*stack_a)->next->chunk)
-		&& ((*stack_a)->rank < (*stack_a)->next->rank))
+		&& ((*stack_a)->rank > (*stack_a)->next->rank))
 		sa(stack_a);
 	// if ((*stack_a)->rank < (*stack_a)->next->rank)
 	// 	sa(stack_a);
@@ -40,7 +40,7 @@ void	find_best_node(t_list **stack_a, int chunks)
 	else
 		while (*stack_a != last_node)
 		{
-			better_sa(stack_a);
+			// better_sa(stack_a);
 			rra(stack_a);
 		}
 }

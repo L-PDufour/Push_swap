@@ -6,58 +6,55 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:59 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/18 14:44:04 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/18 20:42:11 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-
-bool check_if_sorted(t_list *stack)
+bool	check_if_sorted(t_list *stack)
 {
 	if (stack == NULL || stack->next == NULL)
-		return true;
-
+		return (true);
 	while (stack->next != NULL)
 	{
 		if (stack->content > stack->next->content)
-			return false;
+			return (false);
 		stack = stack->next;
 	}
-	return true;
+	return (true);
 }
 
-
-
-void	check_for_duplicates(t_list *stack)
+bool	check_for_duplicates(t_list *stack)
 {
-	t_list	*tmp;
+	t_list	*current;
+	t_list	*temp;
 
-	while (stack != NULL)
+	current = stack;
+	while (current != NULL)
 	{
-		tmp = stack->next;
-		while (tmp != NULL)
+		temp = current->next;
+		while (temp != NULL)
 		{
-			if (stack->content == tmp->content)
-				error(stack);
-			tmp = tmp->next;
+			if (current->content == temp->content)
+				return (true);
+			temp = temp->next;
 		}
-		stack = stack->next;
+		current = current->next;
 	}
+	return (false);
 }
 
-bool check_if_int(t_list *stack)
+bool	check_if_int(t_list *stack)
 {
 	while (stack != NULL)
 	{
 		if (stack->content < INT_MIN || stack->content > INT_MAX)
-			return false;
+			return (false);
 		stack = stack->next;
 	}
-
-	return true;
+	return (true);
 }
-
 
 void	parsing(t_list *stack)
 {
@@ -66,7 +63,11 @@ void	parsing(t_list *stack)
 		error(stack);
 		exit(0);
 	}
-	check_for_duplicates(stack);
+	if (check_for_duplicates(stack))
+	{
+		error(stack);
+		exit(0);
+	}
 	if (check_if_sorted(stack))
 	{
 		ft_lstfree(stack);

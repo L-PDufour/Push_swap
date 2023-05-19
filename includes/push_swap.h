@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:06:03 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/18 14:42:29 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/18 20:27:59 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	pa(t_list **stack_b, t_list **stack_a);
 void	pb(t_list **stack_a, t_list **stack_b);
 bool	check_if_sorted(t_list *stack);
 bool	check_if_int(t_list *stack);
-void	check_for_duplicates(t_list *stack);
+bool	check_for_duplicates(t_list *stack);
 void	parsing(t_list *stack);
 t_list	*stack_init(int argc, char **argv, t_list *stack);
 void	tiny_sort(t_list **stack_a);
@@ -57,5 +57,7 @@ void	free_error(char **array, t_list *stack);
 void	chunk_init(t_list **stack_a);
 void	calculate_move_cost(t_list *stack);
 void	ft_lstfree(t_list *list);
+long	ft_atol(const char *str, char **array, t_list *stack);
+void check_for_digit(char *str, char **array, t_list *stack);
 
 #endif

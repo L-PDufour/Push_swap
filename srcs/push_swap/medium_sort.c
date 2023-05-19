@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:00:36 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/18 13:04:13 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/18 20:40:11 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,19 @@ void	calculate_move_cost(t_list *stack)
 	}
 }
 
-int find_small_chunk(t_list *stack)
+int	find_small_chunk(t_list *stack)
 {
-	int min = 1000;
+	int	min;
 
+	min = 1000;
 	while (stack != NULL)
 	{
 		if (stack->chunk <= min)
 			min = stack->chunk;
 		stack = stack->next;
 	}
-
-	return min;
+	return (min);
 }
-
 
 void	big_sort_stack_b(t_list **stack_a, t_list **stack_b)
 {
@@ -89,8 +88,8 @@ void	big_sort(t_list **stack_a, t_list **stack_b)
 	int	i;
 	int	chunks;
 
-    if (stack_a == NULL || stack_b == NULL)
-        return;
+	if (stack_a == NULL || stack_b == NULL)
+		return ;
 	len = ft_lstsize(*stack_a);
 	i = 0;
 	while (i < len)

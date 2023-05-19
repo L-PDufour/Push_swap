@@ -6,24 +6,26 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:56:42 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/18 13:07:04 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/18 20:30:38 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void ft_lstfree(t_list *list)
+void	ft_lstfree(t_list *list)
 {
-    t_list *current = list;
-    t_list *next;
+	t_list	*current;
+	t_list	*next;
 
-    while (current != NULL)
-    {
-        next = current->next;
-        free(current);
-        current = next;
-    }
+	current = list;
+	while (current != NULL)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
 }
+
 void	tiny_sort(t_list **stack)
 {
 	int	highest_position;

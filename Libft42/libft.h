@@ -6,27 +6,27 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:34:45 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/18 15:10:03 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/18 16:33:15 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <limits.h>
 
 typedef struct s_list
 {
-	long				content;
+	long			content;
 	int				rank;
 	int				cost;
 	int				steps;
 	int				chunk;
 	struct s_list	*next;
 }					t_list;
-					ft_atoi(const char *str);
+int					ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t nmemb, size_t size);
 int					ft_isalnum(int c);

@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:44 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/19 14:41:17 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/20 18:45:59 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ int	main(int argc, char **argv)
 		medium_sort(&stack_a, &stack_b);
 	else
 		big_sort(&stack_a, &stack_b);
+		// better_big_sort(&stack_a, &stack_b);
 	ft_lstfree(stack_a);
 	ft_lstfree(stack_b);
 	return (0);

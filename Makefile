@@ -33,13 +33,14 @@ SRCS = srcs/push_swap.c \
 			srcs/medium_sort.c \
 			srcs/parsing.c \
 			srcs/parsing2.c \
-			srcs/struct.c
+			srcs/struct.c \
+			srcs/algov2.c
 
 SHR = shared/ft_split.c \
 			shared/libft_utils.c \
 			shared/ft_lst.c
 
-OBJS = $(patsubst $(SRCS_DIR)/%.c,$(OBJS_DIR)/%.o,$(SRCS)$)
+OBJS = $(patsubst $(SRCS_DIR)/%.c,$(OBJS_DIR)/%.o,$(SRCS))
 
 .c.o:
 	${CC} -c $< -o ${OBJS_DIR}/${<F:.c=.o}

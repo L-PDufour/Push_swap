@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:06:03 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/19 14:43:03 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/20 15:51:50 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,8 @@ int					ft_lstsize(t_list *lst);
 size_t				ft_strlen(const char *s);
 int					ft_isdigit(int c);
 void				ft_putstr_fd(char *s, int fd);
+int					find_small_chunk(t_list *stack);
+void	better_big_sort(t_list **stack_a, t_list **stack_b);
+
 
 #endif

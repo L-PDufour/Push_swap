@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:00:36 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/19 15:30:20 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/20 21:38:33 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,30 +44,48 @@ int	find_small_chunk(t_list *stack)
 	return (min);
 }
 
-void	better_sb(t_list **stack_b)
+t_list	*ft_lstlast(t_list *lst)
 {
-	if (stack_b == NULL || (*stack_b)->next == NULL)
-		return ;
-	if (((*stack_b)->chunk == (*stack_b)->next->chunk)
-		&& ((*stack_b)->rank < (*stack_b)->next->rank))
-		sb(stack_b);
+	if (!lst)
+		return (NULL);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
 }
 
 void	big_sort_stack_b(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*biggest_node;
+	// t_list	*smallest_node;
 
-	// better_sb(stack_b);
 	count_steps(*stack_b);
 	biggest_node = find_highest_rank(stack_b);
+	// smallest_node = find_smallest_rank(stack_a);
+	// if (smallest_node->rank < biggest_node->rank)
+	// 	while ((*stack_a) != smallest_node)
+	// 		rra(stack_a);
 	if (biggest_node == (*stack_b))
 		pa(stack_b, stack_a);
-	// else if (biggest_node == (*stack_b)->next)
-	// 	sb(stack_b);
 	else if (biggest_node->steps >= 0)
+	{
+		// if (((*stack_b)->rank > (*stack_a)->rank))
+		// {
+		// 	pa(stack_b, stack_a);
+		// 	ra(stack_a);
+		// }
 		rb(stack_b);
+	}
 	else
+	{
+		// if (((*stack_b)->rank > (*stack_a)->rank)
+		// 	&& (((*stack_b)->rank < (ft_lstlast(*stack_a)->rank))
+		// 	|| ft_lstlast(*stack_a)->rank == ft_lstsize(*stack_a)))
+		// {
+		// 	pa(stack_b, stack_a);
+		// 	ra(stack_a);
+		// }
 		rrb(stack_b);
+	}
 }
 
 void	medium_sort(t_list **stack_a, t_list **stack_b)
@@ -92,35 +110,46 @@ void	medium_sort(t_list **stack_a, t_list **stack_b)
 		pa(stack_b, stack_a);
 }
 
+void	better_sa(t_list **stack_a)
+{
+	if (stack_a == NULL || (*stack_a)->next == NULL)
+		return ;
+	if (((*stack_a)->chunk == (*stack_a)->next->chunk)
+		&& ((*stack_a)->rank < (*stack_a)->next->rank))
+		sa(stack_a);
+	// if ((*stack_a)->rank < (*stack_a)->next->rank)
+	// 	sa(stack_a);
+}
+
 void	big_sort(t_list **stack_a, t_list **stack_b)
 {
-	int	len;
-	int	i;
 	int	chunks;
 
-	if (stack_a == NULL || stack_b == NULL)
-		return ;
-	len = ft_lstsize(*stack_a);
-	i = 0;
-	while (i < len )
+	// if (stack_a == NULL || stack_b == NULL)
+	// 	return ;
+	while (ft_lstsize(*stack_a) > 0)
 	{
-		chunks = find_small_chunk(*stack_a);
-		if ((*stack_a)->chunk <= chunks)
-		{
-			pb(stack_a, stack_b);
-			if ((*stack_b)->rank < ft_lstlast(stack_b)->rank
-				rb(stack_b);
-			i++;
-		}
-		// else if((*stack_a)->chunk <= chunks + 1)
-		// {
-		// 	pb(stack_a, stack_b);
-		// 	rrb(stack_b);
-		// 	i++;
-		// }
-		else
-			find_best_node(stack_a, chunks);
+		chunks = find_small_chunk(*stack_a) + 1;
+		// better_sa(stack_a);
+		find_best_node(stack_a, chunks);
+		pb(stack_a, stack_b);
+		if ((*stack_b)->next != NULL
+			&& ((*stack_b)->chunk < (*stack_b)->next->chunk))
+			rb(stack_b);
+		// big_sort(stack_a, stack_b);
 	}
+	// tiny_sort(stack_a);
 	while (ft_lstsize(*stack_b) != 0)
-			big_sort_stack_b(stack_a, stack_b);
+		big_sort_stack_b(stack_a, stack_b);
+	/*
+		compare rank entre le A et le B
+			si le plus petit est dans le B
+				sort_b
+			si dans le a
+			rra until found
+		if (stack_b->rank > stack_a->rank
+			pa
+			if (!bottom stack_a->rank == max rank
+			stack_b->rank > stack_a->rank )
+		*/
 }

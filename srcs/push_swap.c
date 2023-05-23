@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:44 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/20 18:45:59 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/23 14:47:22 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc <= 1)
-		return (1);
+		return (0);
 	stack_a = stack_init(argc, argv, stack_a);
 	parsing(stack_a);
 	rank_final(&stack_a);

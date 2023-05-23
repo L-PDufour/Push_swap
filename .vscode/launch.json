@@ -1,54 +1,66 @@
 {
   "version": "0.2.0",
   "configurations": [
-    {
-      "name": "gcc - Build and debug active file",
-      "type": "cppdbg",
-      "request": "launch",
-      "program": "${workspaceFolder}/push_swap",
-      "args": [
-        "1",
-        "81",
-        "934",
-      ],
-      "stopAtEntry": false,
-      "cwd": "${workspaceFolder}",
-      "environment": [],
-      "externalConsole": false,
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ],
-      "linux": {
-        "MIMode": "gdb",
-        "miDebuggerPath": "/usr/bin/gdb"
-      },
-      "osx": {
-        "MIMode": "lldb"
-      },
-      "preLaunchTask": "C/C++: gcc build active file"
-    },
-    {
-      "name": "C/C++ Runner: Debug Session",
-      "type": "cppdbg",
-      "request": "launch",
-      "args": [],
-      "stopAtEntry": false,
-      "externalConsole": false,
-      "cwd": "/Users/ldufour/Desktop/githubperso/Push_swap",
-      "program": "/Users/ldufour/Desktop/githubperso/Push_swap/push_swap",
-      "MIMode": "lldb",
-      "miDebuggerPath": "lldb",
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ]
-    }
-  ]
+  {
+	"name": "(lldb) Launch",
+	"type": "cppdbg",
+	"request": "launch",
+	"program": "/Users/ldufour/Desktop/githubperso/Push_swap/push_swap",
+	"args": ["10 9 5 3 2 4 1 0 12 13 14 15 16 17 18 19"],
+	"stopAtEntry": false,
+	"cwd": "${fileDirname}",
+	"environment": [],
+	"externalConsole": false,
+	"MIMode": "lldb"
+  }
+//     {
+//       "name": "gcc - Build and debug active file",
+//       "type": "cppdbg",
+//       "request": "launch",
+//       "program": "${workspaceFolder}/push_swap",
+//       "args": [
+//         "1",
+//         "81",
+//         "934",
+//       ],
+//       "stopAtEntry": false,
+//       "cwd": "${workspaceFolder}",
+//       "environment": [],
+//       "externalConsole": false,
+//       "setupCommands": [
+//         {
+//           "description": "Enable pretty-printing for gdb",
+//           "text": "-enable-pretty-printing",
+//           "ignoreFailures": true
+//         }
+//       ],
+//       "linux": {
+//         "MIMode": "gdb",
+//         "miDebuggerPath": "/usr/bin/gdb"
+//       },
+//       "osx": {
+//         "MIMode": "lldb"
+//       },
+//       "preLaunchTask": "C/C++: gcc build active file"
+//     },
+//     {
+//       "name": "C/C++ Runner: Debug Session",
+//       "type": "cppdbg",
+//       "request": "launch",
+//       "args": [],
+//       "stopAtEntry": false,
+//       "externalConsole": false,
+//       "cwd": "/Users/ldufour/Desktop/githubperso/Push_swap",
+//       "program": "/Users/ldufour/Desktop/githubperso/Push_swap/push_swap",
+//       "MIMode": "lldb",
+//       "miDebuggerPath": "lldb",
+//       "setupCommands": [
+//         {
+//           "description": "Enable pretty-printing for gdb",
+//           "text": "-enable-pretty-printing",
+//           "ignoreFailures": true
+//         }
+//       ]
+//     }
+//   ]
 }

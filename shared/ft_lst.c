@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 09:49:45 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/19 10:00:03 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/24 14:46:40 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,18 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	while (temp->next != NULL)
 		temp = temp->next;
 	temp->next = new;
+}
+
+void	ft_lstfree(t_list *list)
+{
+	t_list	*current;
+	t_list	*next;
+
+	current = list;
+	while (current != NULL)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
 }

@@ -5,13 +5,13 @@
 	"name": "(lldb) Launch",
 	"type": "cppdbg",
 	"request": "launch",
-	"program": "/Users/ldufour/Desktop/githubperso/Push_swap/push_swap",
+	"program": "/home/leon/Documents/42cursus/Push_swap/push_swap",
 	"args": ["10 9 5 3 2 4 1 0 12 13 14 15 16 17 18 19"],
 	"stopAtEntry": false,
 	"cwd": "${fileDirname}",
 	"environment": [],
 	"externalConsole": false,
-	"MIMode": "lldb"
+	"MIMode": "gdb"
   }
 //     {
 //       "name": "gcc - Build and debug active file",

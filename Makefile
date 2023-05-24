@@ -14,7 +14,7 @@ PUSH_SWAP = push_swap
 NAME = $(PUSH_SWAP)
 
 CC = gcc
-CFLAGS =  -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g
 
 RM = rm -f
 
@@ -34,7 +34,8 @@ SRCS = srcs/push_swap.c \
 			srcs/parsing.c \
 			srcs/parsing2.c \
 			srcs/struct.c \
-			srcs/algov2.c
+			srcs/big_sort.c \
+			srcs/big_sort_utils.c
 
 SHR = shared/ft_split.c \
 			shared/libft_utils.c \

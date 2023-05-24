@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:36:21 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/23 14:52:05 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/24 15:07:06 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	check_for_digit(char *str, char **array, t_list *stack)
 	if (*str == 45)
 		str++;
 	if (*str < '0' || *str > '9')
-			free_error(array, stack);
+		free_error(array, stack);
 	while (*str != '\0')
 	{
 		if (*str < '0' || *str > '9')

@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 09:49:45 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/24 14:46:40 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/24 15:06:20 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,13 @@ void	ft_lstfree(t_list *list)
 		free(current);
 		current = next;
 	}
+}
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
 }

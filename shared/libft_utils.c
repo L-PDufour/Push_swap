@@ -6,20 +6,11 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 09:54:14 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/24 14:41:51 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/24 15:06:15 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-t_list	*ft_lstlast(t_list *lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
-}
 
 size_t	ft_strlen(const char *s)
 {

@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 14:57:55 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/24 14:59:56 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/24 15:35:35 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	find_best_node_stack_b(t_list **stack_a, t_list **stack_b)
 	if (highest_rank != NULL && best_node != NULL
 		&& highest_rank->cost >= best_node->cost)
 		highest_rank = best_node;
-	if (highest_rank->steps >= 0)
+	if ( highest_rank != NULL && highest_rank->steps >= 0)
 		while (highest_rank != (*stack_b))
 			rb(stack_b);
 	else
@@ -49,7 +49,7 @@ void	find_best_node_stack_b(t_list **stack_a, t_list **stack_b)
 	pa(stack_b, stack_a);
 }
 
-void	check_bottom(t_list **stack_a, t_list **stack_b)
+void	check_bottom(t_list **stack_a)
 {
 	if (ft_lstlast(*stack_a)->rank == (*stack_a)->rank - 1)
 		rra(stack_a);
@@ -57,18 +57,18 @@ void	check_bottom(t_list **stack_a, t_list **stack_b)
 
 void	fill_bottom(t_list **stack_a, t_list **stack_b, t_list *highest_rank)
 {
-	check_bottom(stack_a, stack_b);
+	check_bottom(stack_a);
 	if (ft_lstlast(*stack_a) == highest_rank)
 	{
 		pa(stack_b, stack_a);
 		if ((*stack_a)->rank != (*stack_a)->next->rank - 1)
 			ra(stack_a);
-		check_bottom(stack_a, stack_b);
+		check_bottom(stack_a);
 	}
 	else if ((*stack_b) != NULL && (*stack_b)->rank == (*stack_a)->rank - 1)
 	{
 		pa(stack_b, stack_a);
-		check_bottom(stack_a, stack_b);
+		check_bottom(stack_a);
 	}
 	else if (((*stack_b) != NULL
 				&& (*stack_b)->rank > ft_lstlast(*stack_a)->rank)
@@ -76,14 +76,14 @@ void	fill_bottom(t_list **stack_a, t_list **stack_b, t_list *highest_rank)
 	{
 		pa(stack_b, stack_a);
 		ra(stack_a);
-		check_bottom(stack_a, stack_b);
+		check_bottom(stack_a);
 	}
 	else
 	{
 		find_best_node_stack_b(stack_a, stack_b);
-		check_bottom(stack_a, stack_b);
+		check_bottom(stack_a);
 	}
-	check_bottom(stack_a, stack_b);
+	check_bottom(stack_a);
 }
 
 void	big_sort(t_list **stack_a, t_list **stack_b)

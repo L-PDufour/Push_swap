@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 09:42:25 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/19 09:59:43 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/24 15:38:08 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	i = -1;
 	j = 0;
-	k = 0;
 	while (++i < width(s, c))
 	{
 		k = 0;

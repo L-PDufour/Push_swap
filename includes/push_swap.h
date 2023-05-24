@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:06:03 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/24 14:48:31 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/24 15:32:23 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,16 @@ t_list				*stack_init(int argc, char **argv, t_list *stack);
 void				tiny_sort(t_list **stack_a);
 void				medium_sort(t_list **stack_a, t_list **stack_b);
 void				big_sort(t_list **stack_a, t_list **stack_b);
-void				big_sort_stack_b(t_list **stack_a, t_list **stack_b);
+void				push_biggest_rank_stack_b(t_list **stack_a, t_list **stack_b);
+t_list				*compare_cost(t_list **stack_b, int best_rank);
+t_list				*find_last_node_stack_b(t_list **stack, int best_rank);
+t_list				*find_first_node_stack_b(t_list **stack, int best_rank);
 t_list				*find_smallest_rank(t_list **stack_a);
 void				rank_final(t_list **stack);
 int					find_highest_position(t_list *stack);
 void				count_steps(t_list *stack);
-void				find_best_node(t_list **stack_a, t_list **stack_b, int chunks);
+void				find_best_node(t_list **stack_a, t_list **stack_b,
+						int chunks);
 t_list				*find_last_node(t_list **stack, int chunks);
 t_list				*find_first_node(t_list **stack, int chunks);
 t_list				*find_highest_rank(t_list **stack);
@@ -78,6 +82,5 @@ size_t				ft_strlen(const char *s);
 int					ft_isdigit(int c);
 void				ft_putstr_fd(char *s, int fd);
 int					find_small_chunk(t_list *stack);
-void				better_big_sort(t_list **stack_a, t_list **stack_b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:00:36 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/24 15:00:54 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/24 15:06:53 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,9 @@ void	medium_sort(t_list **stack_a, t_list **stack_b)
 				ra(stack_a);
 		else
 			while (smallest_node != (*stack_a))
-			rra(stack_a);
+				rra(stack_a);
 	}
 	tiny_sort(stack_a);
 	while ((ft_lstsize(*stack_b)) != 0)
 		pa(stack_b, stack_a);
 }
-
-
-
-
-
-
-
-
-

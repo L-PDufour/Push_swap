@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 15:00:33 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/25 11:03:54 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/25 13:16:38 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	push_biggest_rank_stack_b(t_list **stack_a, t_list **stack_b)
 	else
 		while (biggest_node != (*stack_b))
 			rrb(stack_b);
-	// pa(stack_b, stack_a);
 }
 
 /*
@@ -42,7 +41,7 @@ in stack_b.
 @return          The first node with a rank greater than or equal to
 best_rank, or NULL if not found.
 */
-t_list	*find_first_node_stack_b(t_list **stack, int best_rank)
+t_list	*find_first_node_stack_b(t_list **stack, int bottom_rank)
 {
 	t_list	*first_node;
 	t_list	*current_node;
@@ -51,7 +50,7 @@ t_list	*find_first_node_stack_b(t_list **stack, int best_rank)
 	current_node = *stack;
 	while (current_node != NULL)
 	{
-		if (current_node->rank >= best_rank)
+		if (current_node->rank > bottom_rank)
 		{
 			first_node = current_node;
 			break ;
@@ -69,7 +68,7 @@ in stack_b.
 @return          The last node with a rank greater than or equal to
 best_rank, or NULL if not found.
 */
-t_list	*find_last_node_stack_b(t_list **stack, int best_rank)
+t_list	*find_last_node_stack_b(t_list **stack, int bottom_rank)
 {
 	t_list	*current_node;
 	t_list	*last_node;
@@ -78,7 +77,7 @@ t_list	*find_last_node_stack_b(t_list **stack, int best_rank)
 	current_node = *stack;
 	while (current_node != NULL)
 	{
-		if (current_node->rank >= best_rank)
+		if (current_node->rank > bottom_rank)
 			last_node = current_node;
 		current_node = current_node->next;
 	}

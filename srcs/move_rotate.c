@@ -6,12 +6,17 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:57:15 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/19 14:41:02 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/25 09:21:47 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/*
+Performs a rotate operation on the specified stack.
+Moves the top element to the bottom of the stack.
+@param stack The stack on which the rotate operation is performed.
+*/
 void	move_rotate(t_list **stack)
 {
 	t_list	*first;

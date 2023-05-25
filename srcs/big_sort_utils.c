@@ -6,12 +6,17 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 15:00:33 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/24 15:01:02 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/25 09:42:20 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/*
+Pushes the node with the biggest rank from stack_b to stack_a.
+@param stack_a   The stack A.
+@param stack_b   The stack B.
+*/
 void	push_biggest_rank_stack_b(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*biggest_node;
@@ -29,6 +34,14 @@ void	push_biggest_rank_stack_b(t_list **stack_a, t_list **stack_b)
 	pa(stack_b, stack_a);
 }
 
+/*
+Finds the first node with a rank greater than or equal to the given best_rank
+in stack_b.
+@param stack     The stack B.
+@param best_rank The best rank to compare against.
+@return          The first node with a rank greater than or equal to
+best_rank, or NULL if not found.
+*/
 t_list	*find_first_node_stack_b(t_list **stack, int best_rank)
 {
 	t_list	*first_node;
@@ -48,6 +61,14 @@ t_list	*find_first_node_stack_b(t_list **stack, int best_rank)
 	return (first_node);
 }
 
+/*
+Finds the last node with a rank greater than or equal to the given best_rank
+in stack_b.
+@param stack     The stack B.
+@param best_rank The best rank to compare against.
+@return          The last node with a rank greater than or equal to
+best_rank, or NULL if not found.
+*/
 t_list	*find_last_node_stack_b(t_list **stack, int best_rank)
 {
 	t_list	*current_node;

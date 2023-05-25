@@ -6,12 +6,16 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:00:10 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/19 14:41:06 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/25 09:40:16 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/*
+Performs a swap operation on the top two elements of a stack.
+@param stack A pointer to the stack on which the swap operation is performed.
+*/
 void	move_swap(t_list **stack)
 {
 	t_list	*node_a;

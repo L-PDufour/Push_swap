@@ -6,12 +6,20 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:56:42 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/24 14:46:32 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/25 09:05:48 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/*
+@brief Perform a tiny sort on the stack.
+This function performs a tiny sort on the stack, which is a specific set of
+operations to sort a small number of elements. It utilizes the
+find_highest_position function to determine the highest position (rank) in
+the stack and applies the necessary stack operations to achieve the sorting.
+@param stack The stack to perform the tiny sort on.
+*/
 void	tiny_sort(t_list **stack)
 {
 	int	highest_position;
@@ -27,6 +35,13 @@ void	tiny_sort(t_list **stack)
 		sa(stack);
 }
 
+/*
+@brief Find the highest position (rank) in the stack.
+This function traverses the stack and finds the highest position (rank) among
+the elements. The position is determined by the rank field of each element.
+@param stack The stack to search for the highest position.
+@return The highest position (rank) in the stack.
+*/
 int	find_highest_position(t_list *stack)
 {
 	int	position;

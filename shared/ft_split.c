@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 09:42:25 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/24 15:38:08 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/25 09:47:37 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,12 @@ static int	worddup(char *s, char c, int i)
 	return (j);
 }
 
+/*
+Splits a string into an array of substrings based on a delimiter.
+@param s The string to split.
+@param c The delimiter character.
+@return An array of substrings.
+*/
 char	**ft_split(char const *s, char c)
 {
 	char	**array;

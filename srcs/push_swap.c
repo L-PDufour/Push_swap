@@ -6,12 +6,19 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:44 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/24 14:45:21 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/25 08:44:16 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/*
+@brief Assign ranks to elements in the stack.
+This function assigns ranks to the elements in the stack based on their
+content values. The rank of an element represents the number of elements
+in the stack that have a smaller content value.
+@param stack The stack to assign ranks to.
+*/
 void	rank_final(t_list **stack)
 {
 	t_list	*tmp;
@@ -32,6 +39,16 @@ void	rank_final(t_list **stack)
 	}
 }
 
+/*
+@brief Convert a string to a long integer.
+This function takes a string representation of an integer and converts it
+to a long integer value. It supports positive and negative numbers within
+the range of LONG_MIN and LONG_MAX.
+@param str The string to convert to a long integer.
+@param array The array of strings (for error handling).
+@param stack The stack (for error handling).
+@return The converted long integer value.
+*/
 long	ft_atol(const char *str, char **array, t_list *stack)
 {
 	long	result;
@@ -60,6 +77,15 @@ long	ft_atol(const char *str, char **array, t_list *stack)
 	return (result * sign);
 }
 
+/*
+@brief Initialize the stack with values from command-line arguments.
+This function initializes the stack by parsing the command-line arguments
+and adding the values to the stack.
+@param argc The number of command-line arguments.
+@param argv The array of command-line argument strings.
+@param stack The initial stack to populate.
+@return The updated stack after adding values from the arguments.
+ */
 t_list	*stack_init(int argc, char **argv, t_list *stack)
 {
 	int		i;

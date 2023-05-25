@@ -6,12 +6,18 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:00:36 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/24 15:06:53 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/25 09:31:05 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/*
+Calculates the move cost for each node in the stack. It iterates through the
+stack and assigns a move cost to each node based on its position relative to
+the midpoint of the stack.
+@param stack The stack for which to calculate the move cost.
+*/
 void	calculate_move_cost(t_list *stack)
 {
 	int	size;
@@ -30,6 +36,11 @@ void	calculate_move_cost(t_list *stack)
 	}
 }
 
+/*
+Finds the smallest chunk value in the given stack.
+@param stack The stack to search.
+@return The smallest chunk value found in the stack.
+*/
 int	find_small_chunk(t_list *stack)
 {
 	int	min;
@@ -44,6 +55,38 @@ int	find_small_chunk(t_list *stack)
 	return (min);
 }
 
+/*
+Finds the node with the smallest rank in the stack.
+@param stack A pointer to the stack (linked list).
+@return A pointer to the node with the smallest rank, or NULL if the stack
+is empty.
+*/
+t_list	*find_smallest_rank(t_list **stack)
+{
+	t_list	*min_node;
+	t_list	*current;
+
+	if (*stack == NULL)
+		return (NULL);
+	min_node = *stack;
+	current = (*stack)->next;
+	while (current != NULL)
+	{
+		if (current->rank < min_node->rank)
+		{
+			min_node = current;
+		}
+		current = current->next;
+	}
+	return (min_node);
+}
+
+/*
+Push smallest node in stack B until 3 are left and use Tiny sort and
+push to stack A.
+@param stack_a The first stack.
+@param stack_b The second stack.
+*/
 void	medium_sort(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*smallest_node;

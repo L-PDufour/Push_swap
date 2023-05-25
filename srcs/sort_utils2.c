@@ -6,35 +6,11 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:54:06 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/25 09:07:08 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/25 14:45:18 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-/*
-Finds the best node in stack A based on the given chunks and moves it to
-stack B.
-@param stack_a A pointer to stack A (linked list).
-@param stack_b A pointer to stack B (linked list).
-@param chunks  The maximum chunk value to consider.
-*/
-void	find_best_node(t_list **stack_a, t_list **stack_b, int chunks)
-{
-	t_list	*first_node;
-	t_list	*last_node;
-
-	calculate_move_cost(*stack_a);
-	first_node = find_first_node(stack_a, chunks);
-	last_node = find_last_node(stack_a, chunks);
-	if (first_node->cost <= last_node->cost)
-		while (*stack_a != first_node)
-			ra(stack_a);
-	else
-		while (*stack_a != last_node)
-			rra(stack_a);
-	pb(stack_a, stack_b);
-}
 
 /*
 Finds and returns the first node in the stack with a chunk value less than or
@@ -86,3 +62,4 @@ t_list	*find_last_node(t_list **stack, int chunks)
 	}
 	return (last_node);
 }
+

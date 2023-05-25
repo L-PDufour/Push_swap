@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:44 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/25 08:44:16 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/25 14:59:08 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ int	main(int argc, char **argv)
 		sa(&stack_a);
 	else if (size == 3)
 		tiny_sort(&stack_a);
-	else if (size > 3 && size <= 10)
+	else if (size > 3 && size <= 19)
 		medium_sort(&stack_a, &stack_b);
 	else
 		big_sort(&stack_a, &stack_b);

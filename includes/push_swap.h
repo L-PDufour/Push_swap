@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:06:03 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/24 15:32:23 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/25 14:56:54 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void				tiny_sort(t_list **stack_a);
 void				medium_sort(t_list **stack_a, t_list **stack_b);
 void				big_sort(t_list **stack_a, t_list **stack_b);
 void				push_biggest_rank_stack_b(t_list **stack_a, t_list **stack_b);
+void				find_best_node_stack_b(t_list **stack_a, t_list **stack_b);
 t_list				*compare_cost(t_list **stack_b, int best_rank);
 t_list				*find_last_node_stack_b(t_list **stack, int best_rank);
 t_list				*find_first_node_stack_b(t_list **stack, int best_rank);

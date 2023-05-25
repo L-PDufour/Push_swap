@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 15:00:33 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/25 13:16:38 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/25 13:45:48 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ void	push_biggest_rank_stack_b(t_list **stack_a, t_list **stack_b)
 
 	count_steps(*stack_b);
 	biggest_node = find_highest_rank(stack_b);
-	if (biggest_node == (*stack_b))
-		pa(stack_b, stack_a);
-	else if (biggest_node->steps >= 0)
+	if (biggest_node->steps >= 0)
 		while (biggest_node != (*stack_b))
 			rb(stack_b);
 	else
@@ -50,7 +48,7 @@ t_list	*find_first_node_stack_b(t_list **stack, int bottom_rank)
 	current_node = *stack;
 	while (current_node != NULL)
 	{
-		if (current_node->rank > bottom_rank)
+		if (current_node->rank >= bottom_rank)
 		{
 			first_node = current_node;
 			break ;
@@ -77,7 +75,7 @@ t_list	*find_last_node_stack_b(t_list **stack, int bottom_rank)
 	current_node = *stack;
 	while (current_node != NULL)
 	{
-		if (current_node->rank > bottom_rank)
+		if (current_node->rank >= bottom_rank)
 			last_node = current_node;
 		current_node = current_node->next;
 	}

@@ -14,7 +14,7 @@ PUSH_SWAP = push_swap
 NAME = $(PUSH_SWAP)
 
 CC = gcc
-CFLAGS =  -g
+CFLAGS = -Wall -Wextra -Werror -g
 
 RM = rm -f
 

@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 15:00:33 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/25 09:42:20 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/25 11:03:54 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	push_biggest_rank_stack_b(t_list **stack_a, t_list **stack_b)
 	else
 		while (biggest_node != (*stack_b))
 			rrb(stack_b);
-	pa(stack_b, stack_a);
+	// pa(stack_b, stack_a);
 }
 
 /*

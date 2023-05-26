@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:54:06 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/25 14:45:18 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/26 09:02:22 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,3 @@ t_list	*find_last_node(t_list **stack, int chunks)
 	}
 	return (last_node);
 }
-

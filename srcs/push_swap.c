@@ -6,38 +6,11 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:44 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/25 14:59:08 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/26 09:13:07 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-/*
-@brief Assign ranks to elements in the stack.
-This function assigns ranks to the elements in the stack based on their
-content values. The rank of an element represents the number of elements
-in the stack that have a smaller content value.
-@param stack The stack to assign ranks to.
-*/
-void	rank_final(t_list **stack)
-{
-	t_list	*tmp;
-	t_list	*checker;
-
-	tmp = *stack;
-	while (tmp)
-	{
-		tmp->rank = 0;
-		checker = *stack;
-		while (checker)
-		{
-			if (tmp->content > checker->content)
-				tmp->rank += 1;
-			checker = checker->next;
-		}
-		tmp = tmp->next;
-	}
-}
 
 /*
 @brief Convert a string to a long integer.
@@ -114,16 +87,6 @@ t_list	*stack_init(int argc, char **argv, t_list *stack)
 	return (stack);
 }
 
-// void	print_stack(t_list *stack)
-// {
-// 	while (stack != NULL)
-// 	{
-// 		printf("%i\n", stack->content);
-// 		stack = stack->next;
-// 	}
-// }
-// leaks dans ak 1 string still reachable ak chiffre
-
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
@@ -148,6 +111,6 @@ int	main(int argc, char **argv)
 	else
 		big_sort(&stack_a, &stack_b);
 	ft_lstfree(stack_a);
-	ft_lstfree(stack_b);
+	// ft_lstfree(stack_b);
 	return (0);
 }

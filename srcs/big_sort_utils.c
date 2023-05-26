@@ -6,18 +6,28 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 15:00:33 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/25 13:45:48 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/26 09:11:12 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 /*
+Checks and adjusts the bottom elements of stack_a if necessary.
+@param stack_a The stack to check.
+*/
+void	check_bottom(t_list **stack_a)
+{
+	while (ft_lstlast(*stack_a)->rank == (*stack_a)->rank - 1)
+		rra(stack_a);
+}
+
+/*
 Pushes the node with the biggest rank from stack_b to stack_a.
 @param stack_a   The stack A.
 @param stack_b   The stack B.
 */
-void	push_biggest_rank_stack_b(t_list **stack_a, t_list **stack_b)
+void	push_biggest_rank_stack_b(t_list **stack_b)
 {
 	t_list	*biggest_node;
 

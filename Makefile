@@ -56,7 +56,7 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	${CC} ${CFLAGS} -c $< -o $@
 
 clean:
-	${RM} ${OBJS_DIR} ${NAME}
+	${RM} ${NAME} $
 
 fclean: clean
 	${RM} ${NAME}

@@ -6,21 +6,11 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 14:57:55 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/25 15:08:43 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/26 09:40:52 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-/*
-Checks and adjusts the bottom elements of stack_a if necessary.
-@param stack_a The stack to check.
-*/
-void	check_bottom(t_list **stack_a)
-{
-	while (ft_lstlast(*stack_a)->rank == (*stack_a)->rank - 1)
-		rra(stack_a);
-}
 
 /*
 Compares the move costs of the first and last nodes in stack_b and returns
@@ -43,8 +33,6 @@ t_list	*compare_cost(t_list **stack_b, int bottom_rank)
 		return (last_node);
 }
 
-
-
 /**
 Fills the bottom of stack_a under the biggest rank.
 @param stack_a The first stack.
@@ -52,26 +40,27 @@ Fills the bottom of stack_a under the biggest rank.
 @param highest_rank The node with the highest rank in stack_a.*/
 void	fill_bottom(t_list **stack_a, t_list **stack_b, t_list *highest_rank)
 {
-	if (ft_lstlast(*stack_a)->rank == highest_rank->rank)
+	while (ft_lstlast(*stack_a)->rank == highest_rank->rank)
 	{
 		pa(stack_b, stack_a);
-		if ((*stack_a)->rank != (*stack_a)->next->rank - 1)
+		if (*stack_a && (*stack_a)->next
+			&& (*stack_a)->rank != (*stack_a)->next->rank - 1)
 			ra(stack_a);
+		else
+			break ;
 	}
-	else if ((*stack_b) != NULL && (*stack_b)->rank == (*stack_a)->rank - 1)
+	while (*stack_b && (*stack_b)->rank == (*stack_a)->rank - 1)
 	{
 		pa(stack_b, stack_a);
 		check_bottom(stack_a);
 	}
-	else if (((*stack_b) != NULL
-			&& (*stack_b)->rank > ft_lstlast(*stack_a)->rank)
-		|| (ft_lstlast(*stack_a) == highest_rank))
+	while ((*stack_b) && ((*stack_b)->rank > ft_lstlast(*stack_a)->rank
+			|| ft_lstlast(*stack_a) == highest_rank))
 	{
 		pa(stack_b, stack_a);
 		ra(stack_a);
 	}
-	else
-		find_best_node_stack_b(stack_a, stack_b);
+	find_best_node_stack_b(stack_a, stack_b);
 	check_bottom(stack_a);
 }
 
@@ -146,7 +135,7 @@ void	big_sort(t_list **stack_a, t_list **stack_b)
 			&& ((*stack_b)->chunk < (*stack_b)->next->chunk))
 			rb(stack_b);
 	}
-	push_biggest_rank_stack_b(stack_a, stack_b);
+	push_biggest_rank_stack_b(stack_b);
 	pa(stack_b, stack_a);
 	highest_rank = ft_lstlast(*stack_a);
 	while (ft_lstsize(*stack_b) > 0)

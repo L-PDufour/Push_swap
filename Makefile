@@ -14,7 +14,7 @@ PUSH_SWAP = push_swap
 NAME = $(PUSH_SWAP)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
@@ -56,7 +56,7 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	${CC} ${CFLAGS} -c $< -o $@
 
 clean:
-	${RM} ${NAME} $
+	${RM} ${NAME} ${OBJS}
 
 fclean: clean
 	${RM} ${NAME}

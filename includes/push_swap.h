@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:06:03 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/26 09:12:29 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/30 15:15:54 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdint.h>
 
 typedef struct s_list
 {
@@ -71,7 +72,7 @@ void				free_error(char **array, t_list *stack);
 void				chunk_init(t_list **stack_a);
 void				calculate_move_cost(t_list *stack);
 void				ft_lstfree(t_list *list);
-long				ft_atol(const char *str, char **array, t_list *stack);
+long				ft_atol(const char *str);
 void				check_for_digit(char *str, char **array, t_list *stack);
 void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t nmemb, size_t size);

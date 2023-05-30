@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:36:21 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/25 09:12:35 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/30 15:12:48 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ void	free_error(char **array, t_list *stack)
 	int	i;
 
 	i = 0;
-	while (array[i])
+	while (array[i] != NULL)
 	{
 		free(array[i]);
+		array[i] = NULL;
 		i++;
 	}
 	free(array);
@@ -53,7 +54,7 @@ Checks if a string contains only digits.
 */
 void	check_for_digit(char *str, char **array, t_list *stack)
 {
-	if (*str == 45)
+	if (*str == '-')
 		str++;
 	if (*str < '0' || *str > '9')
 		free_error(array, stack);

@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:06:03 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/30 15:15:54 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/30 19:41:01 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,17 @@ void				rrr(t_list **stack_a, t_list **stack_b);
 void				move_push(t_list **stack_from, t_list **stack_to);
 void				pa(t_list **stack_b, t_list **stack_a);
 void				pb(t_list **stack_a, t_list **stack_b);
-bool				check_if_sorted(t_list *stack);
-bool				check_if_int(t_list *stack);
-bool				check_for_duplicates(t_list *stack);
 void				parsing(t_list *stack);
-t_list				*stack_init(int argc, char **argv, t_list *stack);
 void				tiny_sort(t_list **stack_a);
 void				medium_sort(t_list **stack_a, t_list **stack_b);
 void				big_sort(t_list **stack_a, t_list **stack_b);
 void				check_bottom(t_list **stack_a);
 void				push_biggest_rank_stack_b(t_list **stack_b);
-void				find_best_node_stack_b(t_list **stack_a, t_list **stack_b);
 t_list				*compare_cost(t_list **stack_b, int best_rank);
 t_list				*find_last_node_stack_b(t_list **stack, int best_rank);
 t_list				*find_first_node_stack_b(t_list **stack, int best_rank);
-t_list				*find_smallest_rank(t_list **stack_a);
 void				rank_final(t_list **stack);
-int					find_highest_position(t_list *stack);
 void				count_steps(t_list *stack);
-void				find_best_node(t_list **stack_a, t_list **stack_b,
-						int chunks);
 t_list				*find_last_node(t_list **stack, int chunks);
 t_list				*find_first_node(t_list **stack, int chunks);
 t_list				*find_highest_rank(t_list **stack);
@@ -72,8 +63,6 @@ void				free_error(char **array, t_list *stack);
 void				chunk_init(t_list **stack_a);
 void				calculate_move_cost(t_list *stack);
 void				ft_lstfree(t_list *list);
-long				ft_atol(const char *str);
-void				check_for_digit(char *str, char **array, t_list *stack);
 void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t nmemb, size_t size);
 char				**ft_split(char const *s, char c);

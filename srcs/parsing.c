@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:59 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/30 15:19:26 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/30 19:31:44 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Checks if a stack (linked list) is sorted in ascending order.
 @param stack A pointer to the stack to be checked.
 @return True if the stack is sorted, false otherwise.
 */
-bool	check_if_sorted(t_list *stack)
+static bool	check_if_sorted(t_list *stack)
 {
 	if (stack == NULL || stack->next == NULL)
 		return (true);
@@ -35,7 +35,7 @@ Checks if a stack (linked list) contains any duplicate values.
 @param stack A pointer to the stack to be checked.
 @return True if duplicates are found, false otherwise.
 */
-bool	check_for_duplicates(t_list *stack)
+static bool	check_for_duplicates(t_list *stack)
 {
 	t_list	*current;
 	t_list	*temp;
@@ -60,7 +60,7 @@ Checks if all values in a stack (linked list) are within the range of int type.
 @param stack A pointer to the stack to be checked.
 @return True if all values are within the range, false otherwise.
 */
-bool	check_if_int(t_list *stack)
+static bool	check_if_int(t_list *stack)
 {
 	while (stack != NULL)
 	{

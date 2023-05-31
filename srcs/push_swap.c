@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:44 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/30 15:26:14 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/30 19:31:10 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ the range of LONG_MIN and LONG_MAX.
 @param stack The stack (for error handling).
 @return The converted long integer value.
 */
-long	ft_atol(const char *str)
+static long	ft_atol(const char *str)
 {
 	long	result;
 	int		sign;
@@ -38,15 +38,15 @@ long	ft_atol(const char *str)
 		sign *= -1;
 		str++;
 	}
-	if (*str && (*str < '0' || *str > '9'))
-		return(INT64_MAX);
+	if (*str < '0' || *str > '9')
+		return(LONG_MAX);
 	while (ft_isdigit(*str))
 	{
 		result = (result * 10) + (*str - '0');
 		str++;
 	}
 	if (*str && (*str < '0' || *str > '9'))
-		return(INT64_MAX);
+		return(LONG_MAX);
 	return (result * sign);
 }
 
@@ -59,7 +59,7 @@ and adding the values to the stack.
 @param stack The initial stack to populate.
 @return The updated stack after adding values from the arguments.
  */
-t_list	*stack_init(int argc, char **argv, t_list *stack)
+static t_list	*stack_init(int argc, char **argv, t_list *stack)
 {
 	int		i;
 	int		j;

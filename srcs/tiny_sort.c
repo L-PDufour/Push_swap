@@ -6,11 +6,34 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:56:42 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/25 09:05:48 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/30 19:35:26 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+/*
+@brief Find the highest position (rank) in the stack.
+This function traverses the stack and finds the highest position (rank) among
+the elements. The position is determined by the rank field of each element.
+@param stack The stack to search for the highest position.
+@return The highest position (rank) in the stack.
+*/
+static int	find_highest_position(t_list *stack)
+{
+	int	position;
+
+	position = stack->rank;
+	while (stack)
+	{
+		{
+			if (stack->rank > position)
+				position = stack->rank;
+			stack = stack->next;
+		}
+	}
+	return (position);
+}
 
 /*
 @brief Perform a tiny sort on the stack.
@@ -35,25 +58,4 @@ void	tiny_sort(t_list **stack)
 		sa(stack);
 }
 
-/*
-@brief Find the highest position (rank) in the stack.
-This function traverses the stack and finds the highest position (rank) among
-the elements. The position is determined by the rank field of each element.
-@param stack The stack to search for the highest position.
-@return The highest position (rank) in the stack.
-*/
-int	find_highest_position(t_list *stack)
-{
-	int	position;
 
-	position = stack->rank;
-	while (stack)
-	{
-		{
-			if (stack->rank > position)
-				position = stack->rank;
-			stack = stack->next;
-		}
-	}
-	return (position);
-}

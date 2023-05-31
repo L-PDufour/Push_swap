@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 14:57:55 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/30 15:16:07 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/30 19:38:25 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,42 @@ t_list	*compare_cost(t_list **stack_b, int bottom_rank)
 		return (last_node);
 }
 
+
+
+/*
+Finds the best node in stack_b to move to stack_a based on their move costs
+and ranks. The biggest one or the first one bigger than the bottom of a
+@param stack_a The destination stack.
+@param stack_b The source stack.
+*/
+static void	find_best_node_stack_b(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*highest_rank;
+	t_list	*best_node;
+	int		bottom_rank;
+
+	calculate_move_cost(*stack_b);
+	count_steps(*stack_b);
+	highest_rank = find_highest_rank(stack_b);
+	bottom_rank = ft_lstlast(*stack_a)->rank;
+	best_node = compare_cost(stack_b, bottom_rank);
+	if (highest_rank != NULL && best_node != NULL
+		&& highest_rank->cost <= best_node->cost)
+		highest_rank = best_node;
+	if (highest_rank != NULL && highest_rank->steps >= 0)
+		while (highest_rank != (*stack_b))
+			rb(stack_b);
+	else
+		while (highest_rank != (*stack_b))
+			rrb(stack_b);
+}
+
 /**
 Fills the bottom of stack_a under the biggest rank.
 @param stack_a The first stack.
 @param stack_b The second stack.
 @param highest_rank The node with the highest rank in stack_a.*/
-void	fill_bottom(t_list **stack_a, t_list **stack_b, t_list *highest_rank)
+static void	fill_bottom(t_list **stack_a, t_list **stack_b, t_list *highest_rank)
 {
 	while (ft_lstlast(*stack_a)->rank == highest_rank->rank)
 	{
@@ -65,41 +95,13 @@ void	fill_bottom(t_list **stack_a, t_list **stack_b, t_list *highest_rank)
 }
 
 /*
-Finds the best node in stack_b to move to stack_a based on their move costs
-and ranks. The biggest one or the first one bigger than the bottom of a
-@param stack_a The destination stack.
-@param stack_b The source stack.
-*/
-void	find_best_node_stack_b(t_list **stack_a, t_list **stack_b)
-{
-	t_list	*highest_rank;
-	t_list	*best_node;
-	int		bottom_rank;
-
-	calculate_move_cost(*stack_b);
-	count_steps(*stack_b);
-	highest_rank = find_highest_rank(stack_b);
-	bottom_rank = ft_lstlast(*stack_a)->rank;
-	best_node = compare_cost(stack_b, bottom_rank);
-	if (highest_rank != NULL && best_node != NULL
-		&& highest_rank->cost <= best_node->cost)
-		highest_rank = best_node;
-	if (highest_rank != NULL && highest_rank->steps >= 0)
-		while (highest_rank != (*stack_b))
-			rb(stack_b);
-	else
-		while (highest_rank != (*stack_b))
-			rrb(stack_b);
-}
-
-/*
 Finds the best node in stack A based on the given chunks and moves it to
 stack B.
 @param stack_a A pointer to stack A (linked list).
 @param stack_b A pointer to stack B (linked list).
 @param chunks  The maximum chunk value to consider.
 */
-void	find_best_node(t_list **stack_a, t_list **stack_b, int chunks)
+static void	find_best_node(t_list **stack_a, t_list **stack_b, int chunks)
 {
 	t_list	*first_node;
 	t_list	*last_node;

@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:36:21 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/30 15:12:48 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/30 19:40:53 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,4 @@ void	error(t_list *stack)
 	ft_lstfree(stack);
 	ft_putstr_fd("Error\n", STDERR_FILENO);
 	exit(0);
-}
-
-/*
-Checks if a string contains only digits.
-@param str The string to check.
-@param array An array of strings.
-@param stack A pointer to the stack (linked list).
-*/
-void	check_for_digit(char *str, char **array, t_list *stack)
-{
-	if (*str == '-')
-		str++;
-	if (*str < '0' || *str > '9')
-		free_error(array, stack);
-	while (*str != '\0')
-	{
-		if (*str < '0' || *str > '9')
-			free_error(array, stack);
-		str++;
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:00:36 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/25 09:31:05 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/30 19:32:30 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ Finds the node with the smallest rank in the stack.
 @return A pointer to the node with the smallest rank, or NULL if the stack
 is empty.
 */
-t_list	*find_smallest_rank(t_list **stack)
+static t_list	*find_smallest_rank(t_list **stack)
 {
 	t_list	*min_node;
 	t_list	*current;

@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:56:42 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/30 19:35:26 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/31 20:46:02 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,3 @@ void	tiny_sort(t_list **stack)
 	if ((*stack)->rank > (*stack)->next->rank)
 		sa(stack);
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 14:57:55 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/30 19:38:25 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/31 20:46:13 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ t_list	*compare_cost(t_list **stack_b, int bottom_rank)
 	else
 		return (last_node);
 }
-
-
 
 /*
 Finds the best node in stack_b to move to stack_a based on their move costs
@@ -68,7 +66,8 @@ Fills the bottom of stack_a under the biggest rank.
 @param stack_a The first stack.
 @param stack_b The second stack.
 @param highest_rank The node with the highest rank in stack_a.*/
-static void	fill_bottom(t_list **stack_a, t_list **stack_b, t_list *highest_rank)
+static void	fill_bottom(t_list **stack_a, t_list **stack_b,
+		t_list *highest_rank)
 {
 	while (ft_lstlast(*stack_a)->rank == highest_rank->rank)
 	{
@@ -104,16 +103,14 @@ stack B.
 static void	find_best_node(t_list **stack_a, t_list **stack_b, int chunks)
 {
 	t_list	*first_node;
-	t_list	*last_node;
 
-	calculate_move_cost(*stack_a);
+	count_steps(*stack_a);
 	first_node = find_first_node(stack_a, chunks);
-	last_node = find_last_node(stack_a, chunks);
-	if (first_node->cost <= last_node->cost)
+	if (first_node->steps >= 0)
 		while (*stack_a != first_node)
 			ra(stack_a);
 	else
-		while (*stack_a != last_node)
+		while (*stack_a != first_node)
 			rra(stack_a);
 	pb(stack_a, stack_b);
 }

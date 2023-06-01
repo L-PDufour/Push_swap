@@ -10,8 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-PUSH_SWAP = push_swap
-NAME = $(PUSH_SWAP)
+NAME = push_swap
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
@@ -28,11 +27,9 @@ SRCS = srcs/push_swap.c \
 			srcs/move_rotate.c \
 			srcs/move_reverse_rotate.c \
 			srcs/sort_utils.c \
-			srcs/sort_utils2.c \
 			srcs/tiny_sort.c \
 			srcs/medium_sort.c \
 			srcs/parsing.c \
-			srcs/parsing2.c \
 			srcs/struct.c \
 			srcs/big_sort.c \
 			srcs/big_sort_utils.c
@@ -52,7 +49,7 @@ ${NAME}: ${OBJS} ${SHR}
 	${CC} ${CFLAGS} $^ -o $@
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
-	mkdir -p $(OBJS_DIR)
+	@mkdir -p $(OBJS_DIR)
 	${CC} ${CFLAGS} -c $< -o $@
 
 clean:

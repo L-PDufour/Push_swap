@@ -6,35 +6,11 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:00:36 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/30 19:32:30 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/31 20:46:27 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-/*
-Calculates the move cost for each node in the stack. It iterates through the
-stack and assigns a move cost to each node based on its position relative to
-the midpoint of the stack.
-@param stack The stack for which to calculate the move cost.
-*/
-void	calculate_move_cost(t_list *stack)
-{
-	int	size;
-	int	move_cost;
-
-	size = ft_lstsize(stack);
-	move_cost = 0;
-	while (stack != NULL)
-	{
-		if (move_cost <= (size / 2))
-			stack->cost = move_cost;
-		if (move_cost > (size / 2))
-			stack->cost = size - move_cost;
-		stack = stack->next;
-		move_cost++;
-	}
-}
 
 /*
 Finds the smallest chunk value in the given stack.

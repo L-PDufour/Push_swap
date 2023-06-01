@@ -6,11 +6,37 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:44 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/30 19:31:10 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/31 20:46:48 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+/*
+Frees the memory allocated for the array and the stack, prints an error message,
+and exits the program.
+@param array The array to be freed.
+@param stack A pointer to the stack (linked list) to be freed.
+*/
+void	free_error(char *str, char **array, t_list *stack)
+{
+	free(str);
+	free(array);
+	ft_lstfree(stack);
+	ft_putstr_fd("Error\n", STDERR_FILENO);
+	exit(0);
+}
+
+/*
+Handles an error condition, frees the stack, and exits the program.
+@param stack A pointer to the stack (linked list).
+*/
+void	error(t_list *stack)
+{
+	ft_lstfree(stack);
+	ft_putstr_fd("Error\n", STDERR_FILENO);
+	exit(0);
+}
 
 /*
 @brief Convert a string to a long integer.
@@ -39,14 +65,14 @@ static long	ft_atol(const char *str)
 		str++;
 	}
 	if (*str < '0' || *str > '9')
-		return(LONG_MAX);
+		return (LONG_MAX);
 	while (ft_isdigit(*str))
 	{
 		result = (result * 10) + (*str - '0');
 		str++;
 	}
 	if (*str && (*str < '0' || *str > '9'))
-		return(LONG_MAX);
+		return (LONG_MAX);
 	return (result * sign);
 }
 
@@ -75,8 +101,6 @@ static t_list	*stack_init(int argc, char **argv, t_list *stack)
 		while (argv_copy[j])
 		{
 			data = ft_atol(argv_copy[j]);
-			if (data < INT_MIN || data > INT_MAX)
-				error(stack);
 			free(argv_copy[j]);
 			new_node = ft_lstnew(data);
 			ft_lstadd_back(&stack, new_node);
@@ -87,8 +111,7 @@ static t_list	*stack_init(int argc, char **argv, t_list *stack)
 	}
 	return (stack);
 }
-//Utiliser un printstack. Pourquoi est ce j'imprice un int64_max
-//
+
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;

@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 09:49:45 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/25 09:46:53 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/31 16:41:07 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ Creates a new node for a linked list with the specified content.
 @param content The content of the node.
 @return        The newly created node.
 */
-t_list	*ft_lstnew(int content)
+t_list	*ft_lstnew(long content)
 {
 	t_list	*tmp;
 

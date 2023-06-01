@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:06:03 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/30 19:41:01 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/05/31 17:09:36 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 typedef struct s_list
 {
-	int				content;
+	long			content;
 	int				rank;
 	int				cost;
 	int				steps;
@@ -59,7 +59,7 @@ t_list				*find_last_node(t_list **stack, int chunks);
 t_list				*find_first_node(t_list **stack, int chunks);
 t_list				*find_highest_rank(t_list **stack);
 void				error(t_list *stack);
-void				free_error(char **array, t_list *stack);
+void				free_error(char *str, char **array, t_list *stack);
 void				chunk_init(t_list **stack_a);
 void				calculate_move_cost(t_list *stack);
 void				ft_lstfree(t_list *list);
@@ -67,7 +67,7 @@ void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t nmemb, size_t size);
 char				**ft_split(char const *s, char c);
 void				ft_lstadd_back(t_list **lst, t_list *new);
-t_list				*ft_lstnew(int content);
+t_list				*ft_lstnew(long content);
 int					ft_lstsize(t_list *lst);
 t_list				*ft_lstlast(t_list *lst);
 size_t				ft_strlen(const char *s);

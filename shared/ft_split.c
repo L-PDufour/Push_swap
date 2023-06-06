@@ -6,11 +6,27 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 09:42:25 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/25 09:47:37 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/06/06 10:57:24 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	if (!s1 || !s2)
+		return (0);
+	while (n && *s1 && (*s1 == *s2))
+	{
+		++s1;
+		++s2;
+		--n;
+	}
+	if (n == 0)
+		return (0);
+	else
+		return (*(unsigned char *)s1 - *(unsigned char *)s2);
+}
 
 static int	width(char const *s, char c)
 {

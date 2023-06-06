@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:06:03 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/31 17:09:36 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/06/06 11:49:12 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,14 @@
 
 # include <limits.h>
 # include <stdbool.h>
+# include <stdint.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdint.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif
 
 typedef struct s_list
 {
@@ -74,5 +78,16 @@ size_t				ft_strlen(const char *s);
 int					ft_isdigit(int c);
 void				ft_putstr_fd(char *s, int fd);
 int					find_small_chunk(t_list *stack);
+char				*ft_free(char **str);
+char				*ft_strchr(const char *str, int c);
+char				*ft_strjoin(char *s1, char *s2);
+char				*get_next_line(int fd);
+t_list				*stack_init(int argc, char **argv, t_list *stack);
+long				ft_atol(const char *str);
+int					ft_strncmp(const char *s1, const char *s2, size_t n);
+bool				check_if_sorted(t_list *stack);
+bool				check_if_int(t_list *stack);
+bool				check_for_duplicates(t_list *stack);
+void				error(t_list *stack);
 
 #endif

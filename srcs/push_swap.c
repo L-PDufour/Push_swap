@@ -6,7 +6,7 @@
 /*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:53:44 by ldufour           #+#    #+#             */
-/*   Updated: 2023/05/31 20:46:48 by ldufour          ###   ########.fr       */
+/*   Updated: 2023/06/06 13:53:15 by ldufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,91 +25,6 @@ void	free_error(char *str, char **array, t_list *stack)
 	ft_lstfree(stack);
 	ft_putstr_fd("Error\n", STDERR_FILENO);
 	exit(0);
-}
-
-/*
-Handles an error condition, frees the stack, and exits the program.
-@param stack A pointer to the stack (linked list).
-*/
-void	error(t_list *stack)
-{
-	ft_lstfree(stack);
-	ft_putstr_fd("Error\n", STDERR_FILENO);
-	exit(0);
-}
-
-/*
-@brief Convert a string to a long integer.
-This function takes a string representation of an integer and converts it
-to a long integer value. It supports positive and negative numbers within
-the range of LONG_MIN and LONG_MAX.
-@param str The string to convert to a long integer.
-@param array The array of strings (for error handling).
-@param stack The stack (for error handling).
-@return The converted long integer value.
-*/
-static long	ft_atol(const char *str)
-{
-	long	result;
-	int		sign;
-
-	result = 0;
-	sign = 1;
-	if (!str || ft_strlen(str) == 0 || ft_strlen(str) > 11)
-		return (LONG_MAX);
-	while (*str == 32 || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == 45)
-	{
-		sign *= -1;
-		str++;
-	}
-	if (*str < '0' || *str > '9')
-		return (LONG_MAX);
-	while (ft_isdigit(*str))
-	{
-		result = (result * 10) + (*str - '0');
-		str++;
-	}
-	if (*str && (*str < '0' || *str > '9'))
-		return (LONG_MAX);
-	return (result * sign);
-}
-
-/*
-@brief Initialize the stack with values from command-line arguments.
-This function initializes the stack by parsing the command-line arguments
-and adding the values to the stack.
-@param argc The number of command-line arguments.
-@param argv The array of command-line argument strings.
-@param stack The initial stack to populate.
-@return The updated stack after adding values from the arguments.
- */
-static t_list	*stack_init(int argc, char **argv, t_list *stack)
-{
-	int		i;
-	int		j;
-	long	data;
-	char	**argv_copy;
-	t_list	*new_node;
-
-	i = 0;
-	while (++i < argc)
-	{
-		argv_copy = ft_split(argv[i], ' ');
-		j = 0;
-		while (argv_copy[j])
-		{
-			data = ft_atol(argv_copy[j]);
-			free(argv_copy[j]);
-			new_node = ft_lstnew(data);
-			ft_lstadd_back(&stack, new_node);
-			j++;
-		}
-		free(argv_copy);
-		argv_copy = NULL;
-	}
-	return (stack);
 }
 
 int	main(int argc, char **argv)

@@ -11,6 +11,7 @@
 # **************************************************************************** #
 
 NAME = push_swap
+NAME_BONUS = checker
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
@@ -20,6 +21,7 @@ RM = rm -f
 OBJS_DIR = obj
 SRCS_DIR = srcs
 SHR_DIR = shared
+BONUS_DIR = bonus
 
 SRCS = srcs/push_swap.c \
 			srcs/move_swap.c \
@@ -36,7 +38,23 @@ SRCS = srcs/push_swap.c \
 
 SHR = shared/ft_split.c \
 			shared/libft_utils.c \
+			shared/get_next_line_utils.c \
+			shared/get_next_line.c \
 			shared/ft_lst.c
+
+BONUS = bonus/checker_bonus.c \
+			shared/ft_lst.c \
+			shared/get_next_line.c \
+			shared/get_next_line_utils.c \
+			shared/libft_utils.c \
+			shared/ft_split.c \
+			srcs/move_push.c \
+			srcs/move_reverse_rotate.c \
+			srcs/move_rotate.c \
+			srcs/move_swap.c \
+			srcs/struct.c \
+			srcs/parsing.c
+
 
 OBJS = $(patsubst $(SRCS_DIR)/%.c,$(OBJS_DIR)/%.o,$(SRCS))
 
@@ -58,6 +76,13 @@ clean:
 fclean: clean
 	${RM} ${NAME}
 
+bonus: $(NAME_BONUS)
+
+${NAME_BONUS}: $(BONUS)
+		${CC} ${CFLAGS} $^ -o $@
+
+fclean_bonus:
+	${RM} ${NAME_BONUS}
 
 re: clean all
 

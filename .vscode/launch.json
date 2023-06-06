@@ -1,16 +1,23 @@
 {
 	"version": "0.2.0",
 	"configurations": [
+		{
+			"name": "(lldb) Attach",
+			"type": "cppdbg",
+			"request": "attach",
+			"program": "/Users/ldufour/Documents/Push_swap/checker",
+			"MIMode": "lldb"
+		},
 	{
 	  "name": "(lldb) Launch",
 	  "type": "cppdbg",
 	  "request": "launch",
-	  "program": "/home/leon/Documents/42cursus/Push_swap/push_swap",
-	  "args": ["-1 55 80 79 59 95 76 83 9 29 52 85 92 58 48 46 47 26 3 25 71"],
+	  "program": "/Users/ldufour/Documents/Push_swap/checker",
+	  "args": ["26 3 25 71"],
 	  "stopAtEntry": false,
 	  "cwd": "${fileDirname}",
 	  "environment": [],
 	  "externalConsole": false,
-	  "MIMode": "gdb"
+	  "MIMode": "lldb"
 	}]
   }

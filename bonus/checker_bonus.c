@@ -58,36 +58,38 @@ static void	do_move(t_list *stack_a, t_list *stack_b, char *line, int len)
 		move_push(&stack_b, &stack_a);
 	else if (ft_strncmp("pb", line, len) == 0)
 		move_push(&stack_a, &stack_b);
-	else if (ft_strncmp("rra", line, len) == 0 || ft_strncmp("rrb", line,
-				len) == 0 || ft_strncmp("rrr", line, len) == 0)
+	else if (ft_strncmp("rra", line, len) == 0 ||
+				ft_strncmp("rrb", line, len) == 0 ||
+				ft_strncmp("rrr", line, len) == 0)
 		do_reverse_rotate(stack_a, stack_b, line, len);
-	else if (ft_strncmp("ra", line, len) == 0 || ft_strncmp("rb", line,
-				len) == 0 || ft_strncmp("rr", line, len) == 0)
+	else if (ft_strncmp("ra", line, len) == 0 ||
+				ft_strncmp("rb", line, len) == 0 || ft_strncmp("rr", line,
+						len) == 0)
 		do_rotate(stack_a, stack_b, line, len);
-	else if (ft_strncmp("sa", line, len) == 0 || ft_strncmp("sb", line,
-				len) == 0 || ft_strncmp("ss", line, len) == 0)
+	else if (ft_strncmp("sa", line, len) == 0 ||
+				ft_strncmp("sb", line, len) == 0 || ft_strncmp("ss", line,
+						len) == 0)
 		do_swap(stack_a, stack_b, line, len);
 	else
 		error(stack_a);
 }
 
-void move_reader(t_list *stack_a, t_list *stack_b)
+void	move_reader(t_list *stack_a, t_list *stack_b)
 {
-char *line;
-int progress;
+	char	*line;
+	int		progress;
 
-line = NULL;
-free(line);
-progress = 1;
-
-while (progress == 1)
+	line = NULL;
+	// free(line);
+	progress = 1;
+	while (progress == 1)
 	{
-	line = get_next_line(0);
-	do_move (stack_a, stack_b, line, ft_strlen(line) - 1);
-	if (line == NULL)
-		progress = 0;
+		line = get_next_line(0);
+		do_move(stack_a, stack_b, line, ft_strlen(line) - 1);
+		if (line == NULL)
+			progress = 0;
 	}
-free(line);
+	free(line);
 }
 
 void	parsing_checker(t_list *stack)
@@ -103,18 +105,18 @@ void	parsing_checker(t_list *stack)
 		exit(0);
 	}
 }
-void printStack (t_list *stack)
+void	printStack(t_list *stack)
 {
-	t_list *current;
+	t_list	*current;
 
 	current = stack;
-    printf("Stack elements: ");
-    while (current != NULL)
+	printf("Stack elements: ");
+	while (current != NULL)
 	{
-        printf("%ld ", current->content);
+		printf("%ld ", current->content);
 		current = current->next;
-    }
-    printf("\n");
+	}
+	printf("\n");
 }
 // Je perds la tête de la stack
 // Oublie de mettre un double pointeur

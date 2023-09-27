@@ -24,7 +24,7 @@ static char	*extract_line(char *str)
 		return (NULL);
 	while (str[i] != '\n' && str[i] != '\0')
 		i++;
-	if (str[i] == '\n' )
+	if (str[i] == '\n')
 		i++;
 	line = malloc(sizeof(char) * (i + 1));
 	if (!line)
@@ -50,11 +50,11 @@ static char	*fill_stash(char *stash, int fd)
 	buffer[0] = '\0';
 	while (read_bytes > 0 && !ft_strchr(buffer, '\n'))
 	{
-		read_bytes = read (fd, buffer, BUFFER_SIZE);
+		read_bytes = read(fd, buffer, BUFFER_SIZE);
 		if (read_bytes > 0)
 		{
-		buffer[read_bytes] = '\0';
-		stash = ft_strjoin(stash, buffer);
+			buffer[read_bytes] = '\0';
+			stash = ft_strjoin(stash, buffer);
 		}
 	}
 	free(buffer);
@@ -89,8 +89,9 @@ static char	*clean_stash(char *str)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*stash = NULL;
+	static char	*stash;
 
+	stash = NULL;
 	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);

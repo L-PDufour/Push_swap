@@ -58,17 +58,14 @@ static void	do_move(t_list *stack_a, t_list *stack_b, char *line, int len)
 		move_push(&stack_b, &stack_a);
 	else if (ft_strncmp("pb", line, len) == 0)
 		move_push(&stack_a, &stack_b);
-	else if (ft_strncmp("rra", line, len) == 0 ||
-				ft_strncmp("rrb", line, len) == 0 ||
-				ft_strncmp("rrr", line, len) == 0)
+	else if (ft_strncmp("rra", line, len) == 0 || ft_strncmp("rrb", line,
+			len) == 0 || ft_strncmp("rrr", line, len) == 0)
 		do_reverse_rotate(stack_a, stack_b, line, len);
-	else if (ft_strncmp("ra", line, len) == 0 ||
-				ft_strncmp("rb", line, len) == 0 || ft_strncmp("rr", line,
-						len) == 0)
+	else if (ft_strncmp("ra", line, len) == 0 || ft_strncmp("rb", line,
+			len) == 0 || ft_strncmp("rr", line, len) == 0)
 		do_rotate(stack_a, stack_b, line, len);
-	else if (ft_strncmp("sa", line, len) == 0 ||
-				ft_strncmp("sb", line, len) == 0 || ft_strncmp("ss", line,
-						len) == 0)
+	else if (ft_strncmp("sa", line, len) == 0 || ft_strncmp("sb", line,
+			len) == 0 || ft_strncmp("ss", line, len) == 0)
 		do_swap(stack_a, stack_b, line, len);
 	else
 		error(stack_a);

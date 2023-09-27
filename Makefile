@@ -43,6 +43,7 @@ SHR = shared/ft_split.c \
 			shared/ft_lst.c
 
 BONUS = bonus/checker_bonus.c \
+			bonus/move_bonus.c \
 			shared/ft_lst.c \
 			shared/get_next_line.c \
 			shared/get_next_line_utils.c \

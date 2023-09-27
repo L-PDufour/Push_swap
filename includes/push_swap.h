@@ -89,5 +89,10 @@ bool				check_if_sorted(t_list *stack);
 bool				check_if_int(t_list *stack);
 bool				check_for_duplicates(t_list *stack);
 void				error(t_list *stack);
-
+void				do_reverse_rotate(t_list **stack_a, t_list **stack_b,
+						char *line, int len);
+void				do_rotate(t_list **stack_a, t_list **stack_b, char *line,
+						int len);
+void				do_swap(t_list **stack_a, t_list **stack_b, char *line,
+						int len);
 #endif

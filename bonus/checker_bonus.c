@@ -28,7 +28,10 @@ static void	do_move(t_list **stack_a, t_list **stack_b, char *line, int len)
 			len) == 0 || ft_strncmp("ss", line, len) == 0)
 		do_swap(stack_a, stack_b, line, len);
 	else
+	{
+		free(line);
 		error(*stack_a);
+	}
 }
 
 static void	move_reader(t_list **stack_a, t_list **stack_b)
@@ -76,5 +79,7 @@ int	main(int argc, char **argv)
 		printf("OK\n");
 	else
 		printf("KO\n");
+	ft_lstfree(stack_a);
+	ft_lstfree(stack_b);
 	return (0);
 }

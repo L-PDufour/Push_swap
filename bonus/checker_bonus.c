@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include <unistd.h>
 
 static void	do_move(t_list **stack_a, t_list **stack_b, char *line, int len)
 {
@@ -41,9 +42,12 @@ static void	move_reader(t_list **stack_a, t_list **stack_b)
 	line = NULL;
 	while (1)
 	{
-		line = get_next_line(0);
+		line = get_next_line(STDIN_FILENO);
 		if (line == NULL)
+		{
+			free(line);
 			break ;
+		}
 		do_move(stack_a, stack_b, line, ft_strlen(line) - 1);
 		free(line);
 	}

@@ -85,7 +85,7 @@ char				*get_next_line(int fd);
 t_list				*stack_init(int argc, char **argv, t_list *stack);
 long				ft_atol(const char *str);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
-bool				check_if_sorted(t_list *stack);
+bool				check_if_sorted(t_list **stack);
 bool				check_if_int(t_list *stack);
 bool				check_for_duplicates(t_list *stack);
 void				error(t_list *stack);

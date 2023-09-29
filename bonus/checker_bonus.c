@@ -45,10 +45,10 @@ static void	move_reader(t_list **stack_a, t_list **stack_b)
 		line = get_next_line(STDIN_FILENO);
 		if (line == NULL)
 		{
-			free(line);
+			free(line);	
 			break ;
 		}
-		do_move(stack_a, stack_b, line, ft_strlen(line) - 1);
+			do_move(stack_a, stack_b, line, ft_strlen(line) - 1);
 		free(line);
 	}
 }
@@ -79,7 +79,7 @@ int	main(int argc, char **argv)
 	stack_a = stack_init(argc, argv, stack_a);
 	parsing_checker(stack_a);
 	move_reader(&stack_a, &stack_b);
-	if (check_if_sorted(stack_a) == 1)
+	if (check_if_sorted(&stack_a) == 1)
 		printf("OK\n");
 	else
 		printf("KO\n");

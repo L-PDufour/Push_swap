@@ -28,15 +28,18 @@ Checks if a stack (linked list) is sorted in ascending order.
 @param stack A pointer to the stack to be checked.
 @return True if the stack is sorted, false otherwise.
 */
-bool	check_if_sorted(t_list *stack)
+bool	check_if_sorted(t_list **stack)
 {
-	if (stack == NULL || stack->next == NULL)
+	t_list *head;
+
+	head = *stack;
+	if (head == NULL || head->next == NULL)
 		return (true);
-	while (stack->next != NULL)
+	while (head && head->next != NULL)
 	{
-		if (stack->content > stack->next->content)
+		if (head->content > head->next->content)
 			return (false);
-		stack = stack->next;
+		head = head->next;
 	}
 	return (true);
 }
@@ -99,7 +102,7 @@ void	parsing(t_list *stack)
 		error(stack);
 		exit(0);
 	}
-	if (check_if_sorted(stack))
+	if (check_if_sorted(&stack))
 	{
 		ft_lstfree(stack);
 		exit(0);

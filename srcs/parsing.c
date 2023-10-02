@@ -19,7 +19,7 @@ Handles an error condition, frees the stack, and exits the program.
 void	error(t_list *stack)
 {
 	ft_lstfree(stack);
-	printf("Error\n");
+	ft_putstr_fd("Error\n", STDERR_FILENO);
 	exit(0);
 }
 

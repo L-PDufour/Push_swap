@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+        */
+/*   By: leon <leon@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/20 12:36:42 by ldufour           #+#    #+#             */
-/*   Updated: 2023/06/06 09:23:14 by ldufour          ###   ########.fr       */
+/*   Created: 2023/03/20 12:36:42 by leon              #+#    #+#             */
+/*   Updated: 2023/04/09 12:18:57 by leon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		s1 = malloc(sizeof(char) * 1);
 		if (!s1)
 			return (0);
-		s1[0] = '\0';
+		s1[0] = 0;
 	}
 	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!str)
@@ -59,7 +59,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		str[i] = s1[i];
 	while (s2[++j])
 		str[i + j] = s2[j];
-	str[i + j] = '\0';
+	str[i + j] = 0;
 	free(s1);
 	return (str);
 }

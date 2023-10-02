@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <unistd.h>
 
 static void	do_move(t_list **stack_a, t_list **stack_b, char *line, int len)
 {
@@ -35,22 +34,29 @@ static void	do_move(t_list **stack_a, t_list **stack_b, char *line, int len)
 	}
 }
 
-static void	move_reader(t_list **stack_a, t_list **stack_b)
+static void	move_reader(t_list **stack_a, t_list **stack_b, int fd)
 {
 	char	*line;
+	int		i;
 
+	i = 0;
 	line = NULL;
-	while (1)
+	while (i == 0)
 	{
-		line = get_next_line(STDIN_FILENO);
+		line = get_next_line(fd);
 		if (line == NULL)
 		{
-			free(line);	
+			i = 1;
 			break ;
 		}
-			do_move(stack_a, stack_b, line, ft_strlen(line) - 1);
+		do_move(stack_a, stack_b, line, ft_strlen(line) - 1);
 		free(line);
 	}
+	free(line);
+	if (check_if_sorted(stack_a) == 1)
+		printf("OK\n");
+	else
+		printf("KO\n");
 }
 
 static void	parsing_checker(t_list *stack)
@@ -74,15 +80,11 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
-	if (argc <= 1)
+	if (argc < 2)
 		return (0);
 	stack_a = stack_init(argc, argv, stack_a);
 	parsing_checker(stack_a);
-	move_reader(&stack_a, &stack_b);
-	if (check_if_sorted(&stack_a) == 1)
-		printf("OK\n");
-	else
-		printf("KO\n");
+	move_reader(&stack_a, &stack_b, 0);
 	ft_lstfree(stack_a);
 	ft_lstfree(stack_b);
 	return (0);

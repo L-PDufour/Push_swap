@@ -19,7 +19,7 @@ Handles an error condition, frees the stack, and exits the program.
 void	error(t_list *stack)
 {
 	ft_lstfree(stack);
-	ft_putstr_fd("Error\n", STDERR_FILENO);
+	printf("Error\n");
 	exit(0);
 }
 
@@ -30,7 +30,7 @@ Checks if a stack (linked list) is sorted in ascending order.
 */
 bool	check_if_sorted(t_list **stack)
 {
-	t_list *head;
+	t_list	*head;
 
 	head = *stack;
 	if (head == NULL || head->next == NULL)

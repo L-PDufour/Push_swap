@@ -6,7 +6,7 @@
 #    By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/14 14:53:50 by ldufour           #+#    #+#              #
-#    Updated: 2023/09/27 11:01:15 by ldufour          ###   ########.fr        #
+#    Updated: 2023/10/02 14:54:50 by ldufour          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	@mkdir -p $(OBJS_DIR)
 	${CC} ${CFLAGS} -c $< -o $@
 
-clean:
+clean: 
 	${RM} ${OBJS}
 
 fclean: clean
@@ -81,8 +81,10 @@ bonus: $(NAME_BONUS)
 
 ${NAME_BONUS}: $(BONUS)
 		${CC} ${CFLAGS} $^ -o $@
+cleanbonus:
+	$(RM) $(OBJS)
 
-fclean_bonus:
+fcleanbonus:
 	${RM} ${NAME_BONUS}
 
 re: clean all

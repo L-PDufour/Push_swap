@@ -6,7 +6,7 @@
 #    By: ldufour <marvin@42quebec.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/14 14:53:50 by ldufour           #+#    #+#              #
-#    Updated: 2023/10/02 14:54:50 by ldufour          ###   ########.fr        #
+#    Updated: 2023/10/02 18:26:12 by ldufour          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 NAME_BONUS = checker
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
@@ -82,7 +82,7 @@ bonus: $(NAME_BONUS)
 ${NAME_BONUS}: $(BONUS)
 		${CC} ${CFLAGS} $^ -o $@
 cleanbonus:
-	$(RM) $(OBJS)
+	${RM} ${OBJS}
 
 fcleanbonus:
 	${RM} ${NAME_BONUS}
